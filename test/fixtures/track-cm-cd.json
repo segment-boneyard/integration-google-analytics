@@ -1,0 +1,43 @@
+{
+  "settings": {
+    "nonInteraction": 1,
+    "dimensions": {
+      "first_name": "dimension55",
+      "last_name": "dimension51"
+    },
+    "metrics": {
+      "revenue": "metric11"
+    }
+  },
+  "input": {
+    "type": "track",
+    "userId": "user-id",
+    "event": "some-event",
+    "properties": {
+      "value": 1,
+      "label": "some-label",
+      "category": "some-category"
+    },
+    "context": {
+      "traits": {
+        "first_name": "john",
+        "last_name": "doe",
+        "revenue": 20.99
+      }
+    }
+  },
+  "output": {
+    "cd51": "doe",
+    "cd55": "john",
+    "cm11": 20.99,
+    "tid": "UA-27033709-11",
+    "cid": 2710159508,
+    "ea": "some-event",
+    "ec": "some-category",
+    "el": "some-label",
+    "ni": 1,
+    "ev": 1,
+    "t": "event",
+    "v": 1
+  }
+}

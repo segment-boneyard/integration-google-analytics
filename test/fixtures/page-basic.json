@@ -1,0 +1,20 @@
+{
+  "input": {
+    "type": "page",
+    "userId": "user-id",
+    "name": "Google Analytics",
+    "category": "Docs",
+    "properties": {
+      "url": "https://segment.io/docs/integrations/google-analytics/"
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "dh": "segment.io",
+    "tid": "UA-27033709-11",
+    "dp": "/docs/integrations/google-analytics/",
+    "dt": "Docs Google Analytics",
+    "t": "pageview",
+    "v": 1
+  }
+}

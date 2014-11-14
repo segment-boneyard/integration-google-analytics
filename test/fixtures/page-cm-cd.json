@@ -1,0 +1,36 @@
+{
+  "settings": {
+    "dimensions": {
+      "name": "dimension55"
+    },
+    "metrics": {
+      "plan": "metric90"
+    }
+  },
+  "input": {
+    "type": "page",
+    "userId": "user-id",
+    "name": "Google Analytics",
+    "category": "Docs",
+    "properties": {
+      "url": "https://segment.io/docs/integrations/google-analytics/"
+    },
+    "context": {
+      "traits": {
+        "name": "john doe",
+        "plan": "premium"
+      }
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "dh": "segment.io",
+    "tid": "UA-27033709-11",
+    "dp": "/docs/integrations/google-analytics/",
+    "dt": "Docs Google Analytics",
+    "cd55": "john doe",
+    "cm90": "premium",
+    "t": "pageview",
+    "v": 1
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Completed Order",
+    "properties": {
+      "orderId": "order-id",
+      "affiliation": "affiliation",
+      "shipping": 20.99,
+      "total": 999.98,
+      "tax": 80.99,
+      "currency": "USD",
+      "products": [{
+        "sku": "sony-pulse-sku",
+        "category": "gaming",
+        "price": 199.99,
+        "name": "sony pulse",
+        "quantity": 1
+      }, {
+        "sku": "sony-playstation-4-sku",
+        "category": "gaming",
+        "price": 799.99,
+        "name": "sony playstation 4",
+        "quantity": 1
+      }]
+    },
+    "context": {
+      "app": {
+        "name": "web",
+        "version": "1.1"
+      }
+    }
+  },
+  "output": [
+    {
+      "cid": 2710159508,
+      "an": "web",
+      "av": "1.1",
+      "cu": "USD",
+      "t": "transaction",
+      "ta": "affiliation",
+      "ti": "order-id",
+      "tid": "UA-27033709-11",
+      "tr": 999.98,
+      "ts": 20.99,
+      "tt": 80.99,
+      "v": 1
+    },
+    {
+      "cid": 2710159508,
+      "an": "web",
+      "av": "1.1",
+      "cu": "USD",
+      "ic": "sony-pulse-sku",
+      "in": "sony pulse",
+      "tid": "UA-27033709-11",
+      "ip": 199.99,
+      "iq": 1,
+      "iv": "gaming",
+      "t": "item",
+      "ti": "order-id",
+      "v": 1
+    },
+    {
+      "cid": 2710159508,
+      "an": "web",
+      "av": "1.1",
+      "cu": "USD",
+      "ic": "sony-playstation-4-sku",
+      "in": "sony playstation 4",
+      "tid": "UA-27033709-11",
+      "ip": 799.99,
+      "iq": 1,
+      "iv": "gaming",
+      "t": "item",
+      "ti": "order-id",
+      "v": 1
+    }
+  ]
+}

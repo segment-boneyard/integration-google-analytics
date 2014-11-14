@@ -1,0 +1,30 @@
+{
+  "input": {
+    "type": "track",
+    "userId": "user-id",
+    "event": "some-event",
+    "properties": {
+      "value": 1,
+      "label": "some-label",
+      "category": "some-category"
+    },
+    "context": {
+      "app": {
+        "name": "web",
+        "version": "1.1"
+      }
+    }
+  },
+  "output": {
+    "tid": "UA-27033709-11",
+    "an": "web",
+    "av": "1.1",
+    "cid": 2710159508,
+    "ea": "some-event",
+    "ec": "some-category",
+    "el": "some-label",
+    "ev": 1,
+    "t": "event",
+    "v": 1
+  }
+}

@@ -1,0 +1,22 @@
+machine:
+  node:
+    version: 0.10.33
+  python:
+    version: 2.7.3
+  services:
+   - redis
+
+dependencies:
+  pre:
+    - pip install awscli
+
+test:
+  post:
+    - if [ -n "$FORCE" ]; then curl -l -s $BOOSH | sh > /dev/null; fi
+
+deployment:
+  s3:
+   branch: master
+   owner: segmentio
+   commands:
+    - curl -l -s $BOOSH | sh > /dev/null
