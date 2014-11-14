@@ -1,8 +1,8 @@
-[![Build Status](https://circleci.com/gh/segmentio/integration-google-analytics.png)](https://circleci.com/gh/segmentio/integration-google-analytics)
+[![Build Status](https://circleci.com/gh/segmentio/integration-google-analytics/tree/master.png?style=badge)](https://circleci.com/gh/segmentio/integration-google-analytics/tree/master)
 
-# Google Analytics server-side integration.
+# integration-google-analytics
 
-Write me...
+Google Analytics server-side integration for Segment.
 
 
 ## License
