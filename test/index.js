@@ -57,8 +57,7 @@ describe('Google Analytics', function(){
     it('should have the correct settings', function(){
       test
         .name('Google Analytics')
-        .endpoint('https://ssl.google-analytics.com/collect')
-        .retries(2);
+        .endpoint('https://ssl.google-analytics.com/collect');
     });
 
     describe('mapper', function(){
@@ -204,8 +203,7 @@ describe('Google Analytics', function(){
     it('should have the correct settings', function(){
       test
         .name('Google Analytics')
-        .endpoint('https://ssl.google-analytics.com/__utm.gif')
-        .retries(2);
+        .endpoint('https://ssl.google-analytics.com/__utm.gif');
     });
 
     describe('.track()', function(){
