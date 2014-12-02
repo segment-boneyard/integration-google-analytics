@@ -29,11 +29,12 @@
     "mocha": "2.x",
     "ms": "0.x",
     "obj-case": "^0.1.1",
-    "segmentio-facade": "^2.0.5",
+    "segmentio-facade": "2.x",
     "segmentio-integration-tester": "^1.0.5",
     "should": "^4.3.0",
     "string-hash": "^1.1.0",
     "uid": "0.0.2",
-    "unix-time": "1.x"
+    "unix-time": "1.x",
+    "integration-tester": "1.x"
   }
 }
