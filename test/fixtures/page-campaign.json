@@ -24,8 +24,8 @@
     "dp": "/docs/integrations/google-analytics/",
     "dt": "Docs Google Analytics",
     "t": "pageview",
-    "cn": "(c-name)",
-    "cs": "(c-source)",
+    "cn": "c-name",
+    "cs": "c-source",
     "cm": "c-medium",
     "cc": "c-content",
     "v": 1
