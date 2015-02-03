@@ -4,19 +4,15 @@ machine:
   python:
     version: 2.7.3
   services:
-   - redis
+    - redis
 
 dependencies:
   pre:
-    - pip install awscli
-
-test:
-  post:
-    - if [ -n "$FORCE" ]; then curl -l -s $BOOSH | sh > /dev/null; fi
-
+   - pip install awscli
+   
 deployment:
   s3:
    branch: master
-   owner: segmentio
    commands:
-    - curl -l -s $BOOSH | sh > /dev/null
+    - tar --exclude=".git" --exclude="test" --exclude="*.log" --exclude="venv" -zcf $CIRCLE_ARTIFACTS/build.tgz .
+    - aws s3 cp $CIRCLE_ARTIFACTS/build.tgz s3://segmentio/builds/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1.tgz
