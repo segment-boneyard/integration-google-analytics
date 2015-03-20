@@ -1,7 +1,8 @@
 {
   "settings": {
     "dimensions": {
-      "name": "dimension55"
+      "name": "dimension55",
+      "age": "dimension56"
     },
     "metrics": {
       "plan": "metric90"
@@ -13,6 +14,7 @@
     "name": "Google Analytics",
     "category": "Docs",
     "properties": {
+      "age": 15,
       "url": "https://segment.io/docs/integrations/google-analytics/"
     },
     "context": {
@@ -29,6 +31,7 @@
     "dp": "/docs/integrations/google-analytics/",
     "dt": "Docs Google Analytics",
     "cd55": "john doe",
+    "cd56": 15,
     "cm90": "premium",
     "t": "pageview",
     "v": 1
