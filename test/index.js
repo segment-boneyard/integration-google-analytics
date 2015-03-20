@@ -211,7 +211,6 @@ describe('Google Analytics', function(){
         var track = helpers.track();
         var query = ga.classic._querystring(track);
 
-        query.utmhn = '';
         query.utme = ga.classic.formatEvent(track);
         query.utmt = 'event';
         query.utmni = 1;
@@ -230,7 +229,6 @@ describe('Google Analytics', function(){
         var page = helpers.page();
         var query = ga.classic._querystring(page);
 
-        query.utmhn = '';
         query.utmdt = page.proxy('properties.title') || '';
         query.utmp = page.proxy('properties.path') || '/';
 
