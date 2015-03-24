@@ -1,4 +1,12 @@
 
+1.0.8 / 2015-03-24
+==================
+
+  * Add properties to custom dimensions
+  * Merge pull request #8 from segmentio/fix-tests
+  * Fix tests
+  * Update circle template
+
 1.0.7 / 2015-01-21
 ==================
 
