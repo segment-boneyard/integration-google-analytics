@@ -1,0 +1,30 @@
+{
+  "input": {
+    "type": "screen",
+    "userId": "user-id",
+    "name": "Home",
+    "context": {
+      "app": {
+        "name": "Test App",
+        "version": "1.1",
+        "appId":"com.foo.App",
+        "appInstallerId": "com.android.vending"
+      },
+      "library": {
+        "name": "analytics-iOS",
+        "version": "3.0.0"
+      }
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "tid": "UA-27033709-23",
+    "cd": "Home",
+    "t": "screenview",
+    "v": 1,
+    "an": "Test App",
+    "av": "1.1",
+    "aid": "com.foo.App",
+    "aiid": "com.android.vending"
+  }
+}
