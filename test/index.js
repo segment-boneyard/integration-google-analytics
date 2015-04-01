@@ -18,7 +18,7 @@ describe('Google Analytics', function(){
 
   beforeEach(function(){
     payload = {};
-    universal = { serversideTrackingId: 'UA-27033709-11', serversideClassic: false };
+    universal = { serversideTrackingId: 'UA-27033709-11', mobileTrackingId: 'UA-27033709-23', serversideClassic: false };
     classic = { serversideTrackingId: 'UA-27033709-5', serversideClassic: true };
     settings = {
       universal: universal,
@@ -118,6 +118,16 @@ describe('Google Analytics', function(){
           test.maps('completed-order-cm-cd', settings);
         });
       });
+
+       describe('screen', function(){
+        it('should map basic screen', function(){
+          test.maps('screen-basic', settings);
+        });
+
+        it('should map context.app', function(){
+          test.maps('screen-app', settings);
+        });
+      });
     });
 
     describe('.track()', function(){
@@ -176,6 +186,27 @@ describe('Google Analytics', function(){
           .set(settings)
           .set(json.settings)
           .page(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('.screen()', function(){
+      it('should get a good response from the API', function(done){
+        var json = test.fixture('screen-basic');
+        test
+          .set(settings)
+          .screen(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+
+      it('should send app info', function(done){
+        var json = test.fixture('screen-app');
+        test
+          .set(settings)
+          .set(json.settings)
+          .screen(json.input)
           .sends(json.output)
           .expects(200, done);
       });
