@@ -1,4 +1,10 @@
 
+1.0.9 / 2015-04-04
+==================
+
+  * Merge pull request #11 from segmentio/add/mobile
+  * add support for mobile properties and screen calls
+
 1.0.8 / 2015-03-24
 ==================
 
