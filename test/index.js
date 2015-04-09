@@ -31,7 +31,6 @@ describe('Google Analytics', function(){
   it('should have the correct settings', function(){
     test
       .name('Google Analytics')
-      .ensure('settings.serversideTrackingId')
       .channels(['server']);
   });
 
@@ -40,8 +39,19 @@ describe('Google Analytics', function(){
       test.valid({}, settings.universal);
     });
 
-    it('should be invalid without .serversideTrackingId', function(){
+    it('should still be valid with just .mobileTrackingId', function(){
       delete settings.universal.serversideTrackingId;
+      test.valid({}, settings.universal);
+    });
+
+    it('should still be valid with just .serversideTrackingId', function(){
+      delete settings.universal.mobileTrackingId;
+      test.valid({}, settings.universal);
+    });
+
+    it('should be invalid without .serversideTrackingId or .mobileTrackingId', function(){
+      delete settings.universal.serversideTrackingId;
+      delete settings.universal.mobileTrackingId;
       test.invalid({}, settings.universal);
     });
   });
@@ -126,6 +136,11 @@ describe('Google Analytics', function(){
 
         it('should map context.app', function(){
           test.maps('screen-app', settings);
+        });
+
+        it('should fall back to server-side id', function(){
+          delete settings.mobileTrackingId;
+          test.maps('screen-server-id', settings);
         });
       });
     });

@@ -1,0 +1,20 @@
+{
+  "input": {
+    "type": "screen",
+    "userId": "user-id",
+    "name": "Home",
+    "context": {
+      "library": {
+        "name": "analytics-android",
+        "version": "3.0.0"
+      }
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "tid": "UA-27033709-11",
+    "cd": "Home",
+    "t": "screenview",
+    "v": 1
+  }
+}
