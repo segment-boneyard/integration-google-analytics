@@ -1,4 +1,10 @@
 
+1.0.10 / 2015-04-09
+===================
+
+  * Merge pull request #12 from segmentio/fix/mobile
+  * mobile: fall back to server-side tracking ID for compat
+
 1.0.9 / 2015-04-04
 ==================
 
