@@ -5,7 +5,8 @@
     "name": "Google Analytics",
     "category": "Docs",
     "properties": {
-      "url": "https://segment.io/docs/integrations/google-analytics/"
+      "url": "https://segment.io/docs/integrations/google-analytics/",
+      "referrer": "https://friends.com"
     }
   },
   "output": {
@@ -14,6 +15,7 @@
     "tid": "UA-27033709-11",
     "dp": "/docs/integrations/google-analytics/",
     "dt": "Docs Google Analytics",
+    "dr": "https://friends.com",
     "t": "pageview",
     "v": 1
   }
