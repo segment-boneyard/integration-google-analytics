@@ -1,4 +1,10 @@
 
+1.0.11 / 2015-04-16
+===================
+
+  * Merge pull request #13 from segmentio/add/referrer
+  * add support for document referrer
+
 1.0.10 / 2015-04-09
 ===================
 

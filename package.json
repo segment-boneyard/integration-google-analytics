@@ -1,6 +1,6 @@
 {
   "name": "integration-google-analytics",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": true,
   "description": "Google Analytics server-side integration",
   "author": "Segment <friends@segment.com>",
