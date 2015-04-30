@@ -1,23 +1,17 @@
 
 var Test = require('segmentio-integration-tester');
 var helpers = require('./helpers');
-var facade = require('segmentio-facade');
 var GoogleAnalytics = require('..');
 var mapper = require('../lib/mapper');
-var hash = require('string-hash');
-var should = require('should');
-var assert = require('assert');
 
 describe('Google Analytics', function(){
   var settings;
   var universal;
   var classic;
-  var payload;
   var test;
   var ga;
 
   beforeEach(function(){
-    payload = {};
     universal = { serversideTrackingId: 'UA-27033709-11', mobileTrackingId: 'UA-27033709-23', serversideClassic: false };
     classic = { serversideTrackingId: 'UA-27033709-5', serversideClassic: true };
     settings = {
@@ -25,7 +19,7 @@ describe('Google Analytics', function(){
       classic: classic
     };
     ga = new GoogleAnalytics(universal);
-    test = Test(ga);
+    test = new Test(ga);
   });
 
   it('should have the correct settings', function(){
@@ -60,7 +54,7 @@ describe('Google Analytics', function(){
     beforeEach(function(){
       settings = universal;
       ga = new GoogleAnalytics(settings);
-      test = Test(ga.universal, __dirname);
+      test = new Test(ga.universal, __dirname);
       test.mapper(mapper);
     });
 
@@ -129,7 +123,7 @@ describe('Google Analytics', function(){
         });
       });
 
-       describe('screen', function(){
+      describe('screen', function(){
         it('should map basic screen', function(){
           test.maps('screen-basic', settings);
         });
@@ -243,7 +237,7 @@ describe('Google Analytics', function(){
     beforeEach(function(){
       settings = classic;
       ga = new GoogleAnalytics(settings);
-      test = Test(ga.classic);
+      test = new Test(ga.classic);
     });
 
     it('should have the correct settings', function(){
