@@ -11,7 +11,6 @@ node_modules: package.json
 test:
 	@TZ=UTC ./node_modules/.bin/mocha $(TESTS) \
 		--timeout 20000 \
-		--require should \
 		--reporter spec \
 		--inline-diffs \
 		--grep "$(GREP)"
@@ -20,7 +19,6 @@ test-cov:
 	@TZ=UTC ./node_modules/.bin/istanbul cover \
 	  node_modules/.bin/_mocha -- $(TESTS) \
 			--timeout 20s \
-			--require should \
 			--reporter spec \
 			--inline-diffs \
 			--ui exports
