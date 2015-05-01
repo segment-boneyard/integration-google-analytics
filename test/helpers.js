@@ -1,3 +1,4 @@
+'use strict';
 
 var facade = require('segmentio-facade');
 var merge = require('merge-util');
