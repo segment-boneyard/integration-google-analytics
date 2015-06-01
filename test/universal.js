@@ -39,6 +39,10 @@ describe('Google Analytics :: Universal', function(){
         test.maps('page-screen', settings);
       });
 
+      it('should map context.locale', function(){
+        test.maps('page-locale', settings);
+      });
+
       it('should map page with custom dimensions and metrics', function(){
         test.maps('page-cm-cd', settings);
       });
