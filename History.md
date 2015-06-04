@@ -1,4 +1,14 @@
 
+1.0.12 / 2015-06-04
+===================
+
+  * Prevent proxying of undefined functions
+  * Map locale to user language
+  * Separate classic/universal tests
+  * Refactor names for clarity, fix docstrings
+  * Use strict mode everywhere
+  * Clean up syntax inconsistencies, unused deps and dead code
+
 1.0.11 / 2015-04-16
 ===================
 
