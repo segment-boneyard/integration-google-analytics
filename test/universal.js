@@ -64,6 +64,10 @@ describe('Google Analytics :: Universal', function(){
       it('should map page with custom dimensions and metrics', function(){
         test.maps('track-cm-cd', settings);
       });
+
+      it('should map url in track call', function(){
+        test.maps('track-url', settings);
+      });
     });
 
     describe('completed-order', function(){
