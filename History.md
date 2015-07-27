@@ -1,4 +1,10 @@
 
+1.1.0 / 2015-07-27
+==================
+
+  * Merge pull request #23 from segmentio/track/url
+  * Support for url parameters.
+
 1.0.12 / 2015-06-04
 ===================
 
