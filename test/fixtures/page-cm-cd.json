@@ -19,7 +19,7 @@
     },
     "context": {
       "traits": {
-        "name": "john doe",
+        "name": true,
         "plan": "premium"
       }
     }
@@ -30,7 +30,7 @@
     "tid": "UA-27033709-11",
     "dp": "/docs/integrations/google-analytics/",
     "dt": "Docs Google Analytics",
-    "cd55": "john doe",
+    "cd55": "true",
     "cd56": 15,
     "cm90": "premium",
     "t": "pageview",
