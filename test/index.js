@@ -46,5 +46,22 @@ describe('Google Analytics', function(){
       delete settings.mobileTrackingId;
       test.invalid({}, settings);
     });
+
+    it('should be valid with context.app.name', function(){
+      test.valid({
+        type: 'screen',
+        context: {
+          app: {
+            name: 'foo'
+          }
+        }
+      }, settings);
+    });
+
+    it('should be invalid without context.app.name', function(){
+      test.invalid({
+        type: 'screen'
+      }, settings);
+    });
   });
 });
