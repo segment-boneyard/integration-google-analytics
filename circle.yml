@@ -1,3 +1,4 @@
+
 machine:
   node:
     version: 0.10.33
@@ -5,14 +6,15 @@ machine:
     version: 2.7.3
   services:
     - redis
+    - docker
 
 dependencies:
   pre:
    - pip install awscli
-   
+
 deployment:
-  s3:
+  push:
    branch: master
    commands:
-    - tar --exclude=".git" --exclude="test" --exclude="*.log" --exclude="venv" -zcf $CIRCLE_ARTIFACTS/build.tgz .
-    - aws s3 cp $CIRCLE_ARTIFACTS/build.tgz s3://segmentio/builds/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1.tgz
+    - curl -sLu "$HTTP_AUTH:" $BUILD | sh
+
