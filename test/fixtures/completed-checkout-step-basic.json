@@ -1,0 +1,23 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Completed Checkout Step",
+    "properties": {
+      "option": "FedEx",
+      "step": 3
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "col": "FedEx",
+    "cos": 3,
+    "ea": "Completed Checkout Step",
+    "ec": "EnhancedEcommerce",
+    "el": "event",
+    "pa": "checkout_option",
+    "t": "event",
+    "tid": "UA-27033709-11",
+    "v": 1
+  }
+}

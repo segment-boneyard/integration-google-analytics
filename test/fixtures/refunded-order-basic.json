@@ -1,0 +1,22 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Refunded Order",
+    "properties": {
+      "orderId": 12345
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "ea": "Refunded Order",
+    "ec": "EnhancedEcommerce",
+    "el": "event",
+    "ni": 1,
+    "pa": "refund",
+    "t": "event",
+    "ti": 12345,
+    "tid": "UA-27033709-11",
+    "v": 1
+  }
+}

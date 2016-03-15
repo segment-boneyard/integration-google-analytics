@@ -20,7 +20,7 @@ var email = 'testing-' + firstId + '@segment.io';
  * @return {Track}
  */
 
-exports.transaction = function(options){
+exports.transaction = function(options) {
   return new facade.Track(merge({
     userId: firstId,
     channel: 'server',
@@ -59,7 +59,7 @@ exports.transaction = function(options){
  * @return {Track}
  */
 
-exports.track = function(options){
+exports.track = function(options) {
   options = options || {};
   return new facade.Track(merge({
     userId: firstId,
@@ -106,7 +106,7 @@ exports.track = function(options){
  */
 
 
-exports.track.bare = function(options){
+exports.track.bare = function(options) {
   return new facade.Track(merge({
     userId: 'aaa',
     event: 'Bear tracks',
@@ -121,7 +121,7 @@ exports.track.bare = function(options){
  * @return {Identify}
  */
 
-exports.identify = function(options){
+exports.identify = function(options) {
   options = options || {};
   return new facade.Identify(merge({
     userId: firstId,
@@ -161,7 +161,7 @@ exports.identify = function(options){
  * @return {Page}
  */
 
-exports.page = function(options){
+exports.page = function(options) {
   return new facade.Page(merge({
     userId: firstId,
     name: 'Docs',
@@ -185,7 +185,7 @@ exports.page = function(options){
  * @return {Page}
  */
 
-exports.screen = function(options){
+exports.screen = function(options) {
   return new facade.Screen(merge({
     userId: firstId,
     name: 'Login',
@@ -208,7 +208,7 @@ exports.screen = function(options){
  * @return {Group}
  */
 
-exports.group = function(options){
+exports.group = function(options) {
   return new facade.Group(merge({
     groupId: groupId,
     userId: firstId,
@@ -235,7 +235,7 @@ exports.group = function(options){
  * @return {Alias}
  */
 
-exports.alias = function(options){
+exports.alias = function(options) {
   return new facade.Alias(merge({
     from: firstId,
     to: secondId,

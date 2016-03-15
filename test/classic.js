@@ -4,12 +4,12 @@ var Test = require('segmentio-integration-tester');
 var helpers = require('./helpers');
 var GoogleAnalytics = require('..');
 
-describe('Google Analytics Classic', function(){
+describe('Google Analytics Classic', function() {
   var ga;
   var settings;
   var test;
 
-  beforeEach(function(){
+  beforeEach(function() {
     settings = {
       serversideClassic: true,
       serversideTrackingId: 'UA-27033709-5'
@@ -18,14 +18,14 @@ describe('Google Analytics Classic', function(){
     test = new Test(ga.classic);
   });
 
-  it('should have the correct settings', function(){
+  it('should have the correct settings', function() {
     test
       .name('Google Analytics')
       .endpoint('https://ssl.google-analytics.com/__utm.gif');
   });
 
-  describe('.track()', function(){
-    it('should get a good response from the API', function(done){
+  describe('.track()', function() {
+    it('should get a good response from the API', function(done) {
       var track = helpers.track();
       var query = ga.classic._querystring(track);
 
@@ -43,8 +43,8 @@ describe('Google Analytics Classic', function(){
     });
   });
 
-  describe('.page()', function(){
-    it('should get a good response from the API', function(done){
+  describe('.page()', function() {
+    it('should get a good response from the API', function(done) {
       var page = helpers.page();
       var query = ga.classic._querystring(page);
 

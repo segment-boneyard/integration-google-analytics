@@ -28,6 +28,16 @@
   "output": [
     {
       "cid": 2710159508,
+      "t": "event",
+      "tid": "UA-27033709-11",
+      "ea": "Completed Order",
+      "ec": "All",
+      "el": "event",
+      "ev": 1000,
+      "v": 1
+    },
+    {
+      "cid": 2710159508,
       "cu": "USD",
       "t": "transaction",
       "ta": "affiliation",
