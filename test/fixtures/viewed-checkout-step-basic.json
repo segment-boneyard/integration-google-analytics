@@ -1,0 +1,70 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Viewed Checkout Step",
+    "context": {
+      "page": {
+        "path": "/integrations",
+        "search": "?xyz=123",
+        "title": "Integrations - Segment",
+        "url": "https://segment.com/integrations?xyz=123"
+      }
+    },
+    "properties": {
+      "step": 1,
+      "option": "FedEx",
+      "products": [
+        {
+          "brand": "Nike",
+          "category": "Footwear",
+          "id": 10943,
+          "name": "Air Jordans",
+          "price": 99.95,
+          "quantity": 1,
+          "variant": "Black"
+        },
+        {
+          "brand": "Adidas",
+          "category": "Clothing",
+          "id": 22204,
+          "name": "Shorts",
+          "price": 19.95,
+          "quantity": 1,
+          "variant": "Extra Baggy"
+        }
+      ]
+    }
+  },
+  "output": {
+    "ea": "Viewed Checkout Step",
+    "ec": "EnhancedEcommerce",
+    "el": "event",
+    "cid": 2710159508,
+    "col": "FedEx",
+    "cos": 1,
+    "dh": "segment.com",
+    "dp": "/integrations",
+    "dt": "Integrations - Segment",
+    "ea": "Viewed Checkout Step",
+    "ec": "EnhancedEcommerce",
+    "pa": "checkout",
+    "pr1br": "Nike",
+    "pr1ca": "Footwear",
+    "pr1id": 10943,
+    "pr1nm": "Air Jordans",
+    "pr1pr": 99.95,
+    "pr1qt": 1,
+    "pr1va": "Black",
+    "pr2br": "Adidas",
+    "pr2ca": "Clothing",
+    "pr2id": 22204,
+    "pr2nm": "Shorts",
+    "pr2pr": 19.95,
+    "pr2qt": 1,
+    "pr2va": "Extra Baggy",
+    "t": "event",
+    "tid": "UA-27033709-11",
+    "v": 1
+  }
+}

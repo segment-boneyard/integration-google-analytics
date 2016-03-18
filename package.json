@@ -13,9 +13,12 @@
     "test": "make test"
   },
   "dependencies": {
+    "@ndhoule/extend": "^1.0.1",
+    "@ndhoule/foldl": "^1.0.3",
+    "@ndhoule/pick": "^1.0.2",
+    "@ndhoule/values": "^1.0.3",
     "batch": "^0.5.1",
     "is": "^2.1.0",
-    "lodash.assign": "^3.0.0",
     "obj-case": "^0.1.1",
     "segmentio-facade": "^2.1.0",
     "segmentio-integration": "^3.2.0",
@@ -23,13 +26,17 @@
     "unix-time": "^1.0.1"
   },
   "devDependencies": {
+    "eslint": "2.x",
+    "@segment/eslint-config": "^3.0.0",
     "istanbul": "0.x",
     "jscs": "1.x",
+    "lodash.foreach": "^3.0.3",
     "merge-util": "^0.1.0",
     "mocha": "2.x",
     "ms": "0.x",
     "obj-case": "^0.1.1",
     "segmentio-integration-tester": "1.x",
+    "superagent": "^1.8.1",
     "uid": "0.0.2"
   }
 }

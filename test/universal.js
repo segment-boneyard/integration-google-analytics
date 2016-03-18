@@ -1,16 +1,29 @@
 'use strict';
 
-var Test = require('segmentio-integration-tester');
-var helpers = require('./helpers');
-var GoogleAnalytics = require('..');
-var mapper = require('../lib/mapper');
+/**
+ * Module dependencies.
+ */
 
-describe('Google Analytics :: Universal', function(){
+var GoogleAnalytics = require('..');
+var Test = require('segmentio-integration-tester');
+var assert = require('assert');
+var each = require('lodash.foreach');
+var enhancedEcommerceMethods = require('../lib/universal/enhanced-ecommerce');
+var fmt = require('util').format;
+var helpers = require('./helpers');
+var requestOverride = require('./request-override');
+var mapper = require('../lib/universal/mapper');
+
+/**
+ * Tests.
+ */
+
+describe('Google Analytics :: Universal', function() {
   var ga;
   var settings;
   var test;
 
-  beforeEach(function(){
+  beforeEach(function() {
     settings = {
       serversideTrackingId: 'UA-27033709-11',
       mobileTrackingId: 'UA-27033709-23',
@@ -21,91 +34,91 @@ describe('Google Analytics :: Universal', function(){
     test.mapper(mapper);
   });
 
-  describe('mapper', function(){
-    describe('page', function(){
-      it('should map basic page', function(){
+  describe('mapper', function() {
+    describe('page', function() {
+      it('should map basic page', function() {
         test.maps('page-basic', settings);
       });
 
-      it('should map context.app', function(){
+      it('should map context.app', function() {
         test.maps('page-app', settings);
       });
 
-      it('should map context.campaign', function(){
+      it('should map context.campaign', function() {
         test.maps('page-campaign', settings);
       });
 
-      it('should map context.screen', function(){
+      it('should map context.screen', function() {
         test.maps('page-screen', settings);
       });
 
-      it('should map context.locale', function(){
+      it('should map context.locale', function() {
         test.maps('page-locale', settings);
       });
 
-      it('should map page with custom dimensions and metrics', function(){
+      it('should map page with custom dimensions and metrics', function() {
         test.maps('page-cm-cd', settings);
       });
     });
 
-    describe('track', function(){
-      it('should map basic track', function(){
+    describe('track', function() {
+      it('should map basic track', function() {
         test.maps('track-basic', settings);
       });
 
-      it('should map context.app', function(){
+      it('should map context.app', function() {
         test.maps('track-app', settings);
       });
 
-      it('should map context.screen', function(){
+      it('should map context.screen', function() {
         test.maps('page-screen', settings);
       });
 
-      it('should map page with custom dimensions and metrics', function(){
+      it('should map page with custom dimensions and metrics', function() {
         test.maps('track-cm-cd', settings);
       });
 
-      it('should map url in track call', function(){
+      it('should map url in track call', function() {
         test.maps('track-url', settings);
       });
     });
 
-    describe('completed-order', function(){
-      it('should map basic completed-order', function(){
+    describe('completed-order', function() {
+      it('should map basic completed-order', function() {
         test.maps('completed-order-basic', settings);
       });
 
-      it('should map context.app', function(){
+      it('should map context.app', function() {
         test.maps('completed-order-app', settings);
       });
 
-      it('should map context.screen', function(){
+      it('should map context.screen', function() {
         test.maps('page-screen', settings);
       });
 
-      it('should map page with custom dimensions and metrics', function(){
+      it('should map page with custom dimensions and metrics', function() {
         test.maps('completed-order-cm-cd', settings);
       });
     });
 
-    describe('screen', function(){
-      it('should map basic screen', function(){
+    describe('screen', function() {
+      it('should map basic screen', function() {
         test.maps('screen-basic', settings);
       });
 
-      it('should map context.app', function(){
+      it('should map context.app', function() {
         test.maps('screen-app', settings);
       });
 
-      it('should fall back to server-side id', function(){
+      it('should fall back to server-side id', function() {
         delete settings.mobileTrackingId;
         test.maps('screen-server-id', settings);
       });
     });
   });
 
-  describe('.track()', function(){
-    it('should get a good response from the API', function(done){
+  describe('.track()', function() {
+    it('should get a good response from the API', function(done) {
       var track = {};
       track.userId = 'userId';
       track.event = 'event';
@@ -115,7 +128,7 @@ describe('Google Analytics :: Universal', function(){
         .expects(200, done);
     });
 
-    it('should respect .label, .category and .value', function(done){
+    it('should respect .label, .category and .value', function(done) {
       var json = test.fixture('track-basic');
       test
         .set(settings)
@@ -124,7 +137,7 @@ describe('Google Analytics :: Universal', function(){
         .expects(200, done);
     });
 
-    it('should fallback to .revenue after .value', function(done){
+    it('should fallback to .revenue after .value', function(done) {
       var json = test.fixture('track-revenue');
       test
         .set(settings)
@@ -133,7 +146,7 @@ describe('Google Analytics :: Universal', function(){
         .expects(200, done);
     });
 
-    it('should send custom dimensions and metrics', function(done){
+    it('should send custom dimensions and metrics', function(done) {
       var json = test.fixture('track-cm-cd');
       test
         .set(settings)
@@ -144,8 +157,8 @@ describe('Google Analytics :: Universal', function(){
     });
   });
 
-  describe('.page()', function(){
-    it('should get a good response from the API', function(done){
+  describe('.page()', function() {
+    it('should get a good response from the API', function(done) {
       var json = test.fixture('page-basic');
       test
         .set(settings)
@@ -154,7 +167,7 @@ describe('Google Analytics :: Universal', function(){
         .expects(200, done);
     });
 
-    it('should send custom dimensions and metrics', function(done){
+    it('should send custom dimensions and metrics', function(done) {
       var json = test.fixture('page-cm-cd');
       test
         .set(settings)
@@ -165,8 +178,8 @@ describe('Google Analytics :: Universal', function(){
     });
   });
 
-  describe('.screen()', function(){
-    it('should get a good response from the API', function(done){
+  describe('.screen()', function() {
+    it('should get a good response from the API', function(done) {
       var json = test.fixture('screen-basic');
       test
         .set(settings)
@@ -175,7 +188,7 @@ describe('Google Analytics :: Universal', function(){
         .expects(200, done);
     });
 
-    it('should send app info', function(done){
+    it('should send app info', function(done) {
       var json = test.fixture('screen-app');
       test
         .set(settings)
@@ -186,13 +199,361 @@ describe('Google Analytics :: Universal', function(){
     });
   });
 
-  describe('.completedOrder()', function(){
-    it('should send ecommerce data', function(done){
-      var track = helpers.transaction();
-      // TODO: fixture
-      ga.track(track, done);
+  describe('.completedOrder()', function() {
+    it('should send regular completed order event', function(done) {
+      var json = test.fixture('completed-order-basic');
+      test
+        .set(settings)
+        .set({ enhancedEcommerce: false })
+        .track(json.input)
+        .request(0)
+        .sends(json.output[0])
+        .expects(200, done);
     });
 
-    // TODO: cm, cd tests once we have multi request tests.
+    it('should send transaction data', function(done) {
+      var json = test.fixture('completed-order-basic');
+      test
+        .set(settings)
+        .set({ enhancedEcommerce: false })
+        .track(json.input)
+        .request(1)
+        .sends(json.output[1])
+        .expects(200, done);
+    });
+
+    it('should send item data', function(done) {
+      var json = test.fixture('completed-order-basic');
+      test
+        .set(settings)
+        .set({ enhancedEcommerce: false })
+        .track(json.input)
+        .request(2)
+        .sends(json.output[2])
+        .expects(200, done);
+    });
+  });
+
+  describe('enhanced ecommerce', function() {
+    beforeEach(function() {
+      settings.enhancedEcommerce = true;
+      ga = new GoogleAnalytics(settings);
+      test = new Test(ga.universal, __dirname);
+      test.mapper(mapper);
+    });
+
+    it('should not have EE methods when EE is not enabled', function() {
+      settings.enhancedEcommerce = false;
+      ga = new GoogleAnalytics(settings);
+      test = new Test(ga.universal, __dirname);
+
+      each(enhancedEcommerceMethods, function(method, name) {
+        assert(
+          ga.universal[name] !== method,
+          /*eslint-disable*/
+          fmt('GA should not have enhanced ecommerce method %s when settings.enhancedEcommerce is `false`', name)
+          /*eslint-enable*/
+        );
+      });
+    });
+
+    it('should have EE methods when EE is not enabled', function() {
+      each(enhancedEcommerceMethods, function(method, name) {
+        assert(
+          ga.universal[name] === method,
+          /*eslint-disable*/
+          fmt('GA should have enhanced ecommerce method %s when settings.enhancedEcommerce is `true`', name)
+          /*eslint-enable*/
+        );
+      });
+    });
+
+    describe('#viewedProduct', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('viewed-product-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#clickedProduct', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('clicked-product-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#addedProduct', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('added-product-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#removedProduct', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('removed-product-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#startedOrder', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('started-order-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#updatedOrder', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('updated-order-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#completedCheckoutStep', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('completed-checkout-step-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#viewedCheckoutStep', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('viewed-checkout-step-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#refundedOrder', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('refunded-order-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#clickedPromotion', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('clicked-promotion-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#completedOrder', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('completed-order-enhanced');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#viewedPromotion', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('viewed-promotion-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#viewedProduct', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('viewed-product-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#clickedProduct', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('clicked-product-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#addedProduct', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('added-product-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#removedProduct', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('removed-product-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#startedOrder', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('started-order-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#updatedOrder', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('updated-order-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#completedCheckoutStep', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('completed-checkout-step-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#completedOrder', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('completed-order-enhanced');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#viewedCheckoutStep', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('viewed-checkout-step-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#refundedOrder', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('refunded-order-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#clickedPromotion', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('clicked-promotion-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#viewedPromotion', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('viewed-promotion-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
   });
 });

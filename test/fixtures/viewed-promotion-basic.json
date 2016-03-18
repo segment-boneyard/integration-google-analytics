@@ -1,0 +1,40 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Viewed Promotion",
+    "context": {
+      "page": {
+        "path": "/integrations",
+        "search": "?xyz=123",
+        "title": "Integrations - Segment",
+        "url": "https://segment.com/integrations?xyz=123"
+      }
+    },
+    "properties": {
+      "creative": "Some dummy creative here",
+      "currency": "USD",
+      "id": "PROMO_1",
+      "label": "Some Label",
+      "name": "summer_sale",
+      "position": "slot_1"
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "ea": "Viewed Promotion",
+    "ec": "EnhancedEcommerce",
+    "el": "Some Label",
+    "dh": "segment.com",
+    "dp": "/integrations",
+    "dt": "Integrations - Segment",
+    "promo1cr": "Some dummy creative here",
+    "promo1id": "PROMO_1",
+    "promo1nm": "summer_sale",
+    "promo1ps": "slot_1",
+    "t": "event",
+    "tid": "UA-27033709-11",
+    "v": 1,
+    "ni": 1
+  }
+}

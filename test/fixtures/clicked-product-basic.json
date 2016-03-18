@@ -1,0 +1,41 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Clicked Product",
+    "context": {
+      "page": {
+        "path": "/integrations",
+        "search": "?xyz=123",
+        "title": "Integrations - Segment",
+        "url": "https://segment.com/integrations?xyz=123"
+      }
+    },
+    "properties": {
+      "category": "Games",
+      "id": "507f1f77bcf86cd799439011",
+      "name": "Monopoly: 3rd Edition",
+      "price": 18.99,
+      "quantity": 2,
+      "sku": "45790-32"
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "dh": "segment.com",
+    "dp": "/integrations",
+    "dt": "Integrations - Segment",
+    "ea": "Clicked Product",
+    "ec": "EnhancedEcommerce",
+    "el": "event",
+    "pr1ca": "Games",
+    "pr1id": "507f1f77bcf86cd799439011",
+    "pr1nm": "Monopoly: 3rd Edition",
+    "pr1pr": 18.99,
+    "pr1qt": 2,
+    "pa": "click",
+    "t": "event",
+    "tid": "UA-27033709-11",
+    "v": 1
+  }
+}
