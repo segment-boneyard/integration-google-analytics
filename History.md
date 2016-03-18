@@ -1,4 +1,12 @@
 
+1.2.0 / 2016-03-18
+==================
+
+  * Add support for enhanced ecommerce
+  * add docker, refactor circle
+  * adds validation for context.app.name
+  * reject -> invalid for settings error; rephrase
+
 1.1.2 / 2015-09-11
 ==================
 
