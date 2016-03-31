@@ -155,6 +155,16 @@ describe('Google Analytics :: Universal', function() {
         .sends(json.output)
         .expects(200, done);
     });
+
+    it('should not send ua if device is not present', function(done) {
+      var json = test.fixture('track-app');
+      test
+        .set(settings)
+        .set(json.settings)
+        .track(json.input)
+        .sends(json.output)
+        .expects(200, done);
+    });
   });
 
   describe('.page()', function() {
@@ -176,6 +186,16 @@ describe('Google Analytics :: Universal', function() {
         .sends(json.output)
         .expects(200, done);
     });
+
+    it('should create ua without userAgent present', function(done) {
+      var json = test.fixture('page-app');
+      test
+        .set(settings)
+        .set(json.settings)
+        .page(json.input)
+        .sends(json.output)
+        .expects(200, done);
+    });
   });
 
   describe('.screen()', function() {
@@ -189,6 +209,16 @@ describe('Google Analytics :: Universal', function() {
     });
 
     it('should send app info', function(done) {
+      var json = test.fixture('screen-app');
+      test
+        .set(settings)
+        .set(json.settings)
+        .screen(json.input)
+        .sends(json.output)
+        .expects(200, done);
+    });
+
+    it('should send ua value', function(done) {
       var json = test.fixture('screen-app');
       test
         .set(settings)

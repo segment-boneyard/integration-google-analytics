@@ -12,6 +12,10 @@
       "app": {
         "name": "web",
         "version": "1.1"
+      },
+      "os": {
+        "name": "iPhone OS",
+        "version": "9.3"
       }
     }
   },
