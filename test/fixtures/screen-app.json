@@ -13,7 +13,8 @@
       "library": {
         "name": "analytics-iOS",
         "version": "3.0.0"
-      }
+      },
+      "userAgent": "Dalvik/2.1.0 (Linux; U; Android 5.0; SM-G900V Build/LRX21T)"
     }
   },
   "output": {
@@ -25,6 +26,7 @@
     "an": "Test App",
     "av": "1.1",
     "aid": "com.foo.App",
-    "aiid": "com.android.vending"
+    "aiid": "com.android.vending",
+    "ua" : "Dalvik/2.1.0 (Linux; U; Android 5.0; SM-G900V Build/LRX21T)"
   }
 }

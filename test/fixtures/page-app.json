@@ -11,7 +11,17 @@
       "app": {
         "name": "web",
         "version": "1.1"
-      }
+      },
+      "device": {
+        "manufacturer": "Apple",
+        "model": "iPhone8,1",
+        "type": "ios"
+      },
+      "os": {
+        "name": "iPhone OS",
+        "version": "9.3"
+      },
+      "locale": "en-US"
     }
   },
   "output": {
@@ -23,6 +33,8 @@
     "an": "web",
     "av": "1.1",
     "t": "pageview",
-    "v": 1
+    "v": 1,
+    "ul": "en-US",
+    "ua": "Segment/1.0 (iPhone OS; CPU iPhone8,1; en-US) Apple; Version 9.3"
   }
 }
