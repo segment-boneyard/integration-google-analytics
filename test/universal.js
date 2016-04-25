@@ -36,88 +36,97 @@ describe('Google Analytics :: Universal', function() {
 
   describe('mapper', function() {
     describe('page', function() {
+      var options = {'ignored': ['qt']};
+
       it('should map basic page', function() {
-        test.maps('page-basic', settings);
+        test.maps('page-basic', settings, options);
       });
 
       it('should map context.app', function() {
-        test.maps('page-app', settings);
+        test.maps('page-app', settings, options);
       });
 
       it('should map context.campaign', function() {
-        test.maps('page-campaign', settings);
+        test.maps('page-campaign', settings, options);
       });
 
       it('should map context.screen', function() {
-        test.maps('page-screen', settings);
+        test.maps('page-screen', settings, options);
       });
 
       it('should map context.locale', function() {
-        test.maps('page-locale', settings);
+        test.maps('page-locale', settings, options);
       });
 
       it('should map page with custom dimensions and metrics', function() {
-        test.maps('page-cm-cd', settings);
+        test.maps('page-cm-cd', settings, options);
       });
     });
 
     describe('track', function() {
+      var options = {'ignored': ['qt']};
+
       it('should map basic track', function() {
-        test.maps('track-basic', settings);
+        test.maps('track-basic', settings, options);
       });
 
       it('should map context.app', function() {
-        test.maps('track-app', settings);
+        test.maps('track-app', settings, options);
       });
 
       it('should map context.screen', function() {
-        test.maps('page-screen', settings);
+        test.maps('page-screen', settings, options);
       });
 
       it('should map page with custom dimensions and metrics', function() {
-        test.maps('track-cm-cd', settings);
+        test.maps('track-cm-cd', settings, options);
       });
 
       it('should map url in track call', function() {
-        test.maps('track-url', settings);
+        test.maps('track-url', settings, options);
       });
     });
 
     describe('completed-order', function() {
+      var options = {'ignored': ['qt']};
+
       it('should map basic completed-order', function() {
-        test.maps('completed-order-basic', settings);
+        test.maps('completed-order-basic', settings, options);
       });
 
       it('should map context.app', function() {
-        test.maps('completed-order-app', settings);
+        test.maps('completed-order-app', settings, options);
       });
 
       it('should map context.screen', function() {
-        test.maps('page-screen', settings);
+        test.maps('page-screen', settings, options);
       });
 
       it('should map page with custom dimensions and metrics', function() {
-        test.maps('completed-order-cm-cd', settings);
+        test.maps('completed-order-cm-cd', settings, options);
       });
     });
 
     describe('screen', function() {
+      var options = {'ignored': ['qt']};
+
       it('should map basic screen', function() {
-        test.maps('screen-basic', settings);
+        test.maps('screen-basic', settings, options);
       });
 
       it('should map context.app', function() {
-        test.maps('screen-app', settings);
+        test.maps('screen-app', settings, options);
       });
 
       it('should fall back to server-side id', function() {
         delete settings.mobileTrackingId;
-        test.maps('screen-server-id', settings);
+        test.maps('screen-server-id', settings, options);
       });
     });
   });
 
   describe('.track()', function() {
+
     it('should get a good response from the API', function(done) {
       var track = {};
       track.userId = 'userId';
@@ -133,7 +142,7 @@ describe('Google Analytics :: Universal', function() {
       test
         .set(settings)
         .track(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -142,7 +151,7 @@ describe('Google Analytics :: Universal', function() {
       test
         .set(settings)
         .track(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -152,7 +161,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .track(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -162,7 +171,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .track(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
   });
@@ -173,7 +182,7 @@ describe('Google Analytics :: Universal', function() {
       test
         .set(settings)
         .page(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -183,7 +192,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .page(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -193,7 +202,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .page(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
   });
@@ -204,7 +213,7 @@ describe('Google Analytics :: Universal', function() {
       test
         .set(settings)
         .screen(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -214,7 +223,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .screen(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -224,7 +233,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .screen(json.input)
-        .sends(json.output)
+        .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
   });
@@ -237,7 +246,7 @@ describe('Google Analytics :: Universal', function() {
         .set({ enhancedEcommerce: false })
         .track(json.input)
         .request(0)
-        .sends(json.output[0])
+        .sendsAlmost(json.output[0], {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -248,7 +257,7 @@ describe('Google Analytics :: Universal', function() {
         .set({ enhancedEcommerce: false })
         .track(json.input)
         .request(1)
-        .sends(json.output[1])
+        .sendsAlmost(json.output[1], {ignored: ['qt']})
         .expects(200, done);
     });
 
@@ -259,7 +268,7 @@ describe('Google Analytics :: Universal', function() {
         .set({ enhancedEcommerce: false })
         .track(json.input)
         .request(2)
-        .sends(json.output[2])
+        .sendsAlmost(json.output[2], {ignored: ['qt']})
         .expects(200, done);
     });
   });
@@ -304,7 +313,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -315,7 +324,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -326,7 +335,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -337,7 +346,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -348,7 +357,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -359,7 +368,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -370,7 +379,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -381,7 +390,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -392,7 +401,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -403,7 +412,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -414,7 +423,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -425,7 +434,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(200, done);
       });
     });
@@ -438,7 +447,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(/"valid": true/, done);
       });
     });
@@ -451,7 +460,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(/"valid": true/, done);
       });
     });
@@ -477,7 +486,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(/"valid": true/, done);
       });
     });
@@ -490,7 +499,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(/"valid": true/, done);
       });
     });
@@ -503,7 +512,7 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, {ignored: ['qt']})
           .expects(/"valid": true/, done);
       });
     });
