@@ -35,7 +35,7 @@
     "mocha": "2.x",
     "ms": "0.x",
     "obj-case": "^0.1.1",
-    "segmentio-integration-tester": "1.x",
+    "segmentio-integration-tester": "^1.1.0",
     "superagent": "^1.8.1",
     "uid": "0.0.2"
   }
