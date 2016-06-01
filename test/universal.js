@@ -137,7 +137,7 @@ describe('Google Analytics :: Universal', function() {
         .expects(200, done);
     });
 
-    it('should respect .label, .category, and .value and not use .name', function(done) {
+    it('should respect .label, .category, and .value and not use .screenName', function(done) {
       var json = test.fixture('track-basic');
       test
         .set(settings)

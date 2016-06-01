@@ -13,7 +13,7 @@
       "label": "some-label",
       "category": "some-category",
       "nonInteraction": 1,
-      "name": "name-of-screen-where-event-occurs"
+      "screenName": "name-of-screen-where-event-occurs"
     }
   },
   "output": {
