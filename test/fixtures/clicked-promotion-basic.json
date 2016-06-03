@@ -2,7 +2,7 @@
   "input": {
     "userId": "user-id",
     "type": "track",
-    "event": "Clicked Promotion",
+    "event": "Promotion Clicked",
     "properties": {
       "creative": "Some dummy creative here",
       "currency": "USD",
@@ -14,7 +14,7 @@
   },
   "output": {
     "cid": 2710159508,
-    "ea": "Clicked Promotion",
+    "ea": "Promotion Clicked",
     "ec": "EnhancedEcommerce",
     "el": "Some Label",
     "promo1cr": "Some dummy creative here",

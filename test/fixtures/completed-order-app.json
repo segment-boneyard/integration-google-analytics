@@ -2,7 +2,7 @@
   "input": {
     "userId": "user-id",
     "type": "track",
-    "event": "Completed Order",
+    "event": "Order Completed",
     "properties": {
       "orderId": "order-id",
       "affiliation": "affiliation",
@@ -38,7 +38,7 @@
       "av": "1.1",
       "t": "event",
       "tid": "UA-27033709-11",
-      "ea": "Completed Order",
+      "ea": "Order Completed",
       "ec": "All",
       "el": "event",
       "ev": 1000,

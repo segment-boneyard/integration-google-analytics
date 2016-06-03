@@ -2,7 +2,7 @@
   "input": {
     "userId": "user-id",
     "type": "track",
-    "event": "Viewed Promotion",
+    "event": "Promotion Viewed",
     "context": {
       "page": {
         "path": "/integrations",
@@ -22,7 +22,7 @@
   },
   "output": {
     "cid": 2710159508,
-    "ea": "Viewed Promotion",
+    "ea": "Promotion Viewed",
     "ec": "EnhancedEcommerce",
     "el": "Some Label",
     "dh": "segment.com",

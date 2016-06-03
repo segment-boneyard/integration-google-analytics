@@ -2,7 +2,7 @@
   "input": {
     "userId": "user-id",
     "type": "track",
-    "event": "Started Order",
+    "event": "Order Started",
     "context": {
       "page": {
         "path": "/integrations",
@@ -26,7 +26,7 @@
     "dh": "segment.com",
     "dp": "/integrations",
     "dt": "Integrations - Segment",
-    "ea": "Started Order",
+    "ea": "Order Started",
     "ec": "EnhancedEcommerce",
     "el": "event",
     "pa": "checkout",
