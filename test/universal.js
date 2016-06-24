@@ -13,6 +13,7 @@ var fmt = require('util').format;
 var helpers = require('./helpers');
 var requestOverride = require('./request-override');
 var mapper = require('../lib/universal/mapper');
+var sinon = require('sinon');
 
 /**
  * Tests.
@@ -22,13 +23,16 @@ describe('Google Analytics :: Universal', function() {
   var ga;
   var settings;
   var test;
+  var sandbox;
 
   beforeEach(function() {
+    sandbox = sinon.sandbox.create();
     settings = {
       serversideTrackingId: 'UA-27033709-11',
       mobileTrackingId: 'UA-27033709-23',
       serversideClassic: false
     };
+
     ga = new GoogleAnalytics(settings);
     test = new Test(ga.universal, __dirname);
     test.mapper(mapper);
@@ -130,6 +134,34 @@ describe('Google Analytics :: Universal', function() {
       it('should send traits that are mapped as custom dimensions and metrics', function() {
         test.maps('identify-cm-cd', settings, options);
       });
+
+      it('should get a good response from the API', function(done) {
+        var spy = sandbox.spy(ga.universal, 'post');
+        var identify = {};
+        settings.dimensions = { trait: "dimension8" };
+        identify.userId = 'userId';
+        identify.traits = { trait: true };
+        test
+          .identify(identify, settings)
+          .expects(200)
+          .end(function(err, res){
+            assert(spy.called, 'Expected spy to have been called');
+            done(err);
+          });;
+      });
+
+       it('should skip if no traits are mapped', function(done){
+        var spy = sandbox.spy(ga.universal, 'post');
+        var identify = {};
+        identify.userId = 'userId';
+        identify.traits = {};
+        test
+          .identify(identify, settings)
+          .end(function(err, res){
+            assert(!spy.called, 'Expected spy to have not been called');
+            done(err);
+          });
+      });
     });
 
     describe('group', function() {
@@ -137,6 +169,34 @@ describe('Google Analytics :: Universal', function() {
 
       it('should send account traits that are mapped as custom dimensions and metrics', function() {
         test.maps('group-cm-cd', settings, options);
+      });
+
+      it('should get a good response from the API', function(done) {
+        var spy = sandbox.spy(ga.universal, 'post');
+        var group = {};
+        settings.dimensions = { trait: "dimension8" };
+        group.userId = 'userId';
+        group.traits = { trait: true };
+        test
+          .group(group, settings)
+          .expects(200)
+          .end(function(err, res){
+            assert(spy.called, 'Expected spy to have been called');
+            done(err);
+          });;
+      });
+
+       it('should skip if no traits are mapped', function(done){
+        var spy = sandbox.spy(ga.universal, 'post');
+        var group = {};
+        group.userId = 'userId';
+        group.traits = {};
+        test
+          .group(group, settings)
+          .end(function(err, res){
+            assert(!spy.called, 'Expected spy to have not been called');
+            done(err);
+          });
       });
     });
   });
