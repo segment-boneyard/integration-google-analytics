@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "dimensions": {
+      "connectedness": "dimension55",
+      "qualified": "dimension56",
+      "role": "dimension8",
+      "dontsend": "dimension1"
+    },
+    "metrics": {
+      "net_new_integrations_trailing_30": "metric90"
+    },
+    "sendUserId": true
+  },
+  "input": {
+    "type": "group",
+    "userId": "user-id",
+    "groupId": "group-id",
+    "traits": {
+        "connectedness": "very",
+        "qualified": true,
+        "net_new_integrations_trailing_30": 4
+    },
+    "context": {}
+  },
+  "output": {
+    "cid": 2710159508,
+    "tid": "UA-27033709-11",
+    "uid": "user-id",
+    "cd55": "very",
+    "cd56": "true",
+    "cm90": 4,
+    "ea":"group",
+    "el":"group",
+    "ec":"user",
+    "t": "event",
+    "v": 1
+  }
+}

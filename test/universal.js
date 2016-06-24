@@ -123,6 +123,22 @@ describe('Google Analytics :: Universal', function() {
         test.maps('screen-server-id', settings, options);
       });
     });
+
+    describe('identify', function() {
+      var options = {'ignored': ['qt']};
+
+      it('should send traits that are mapped as custom dimensions and metrics', function() {
+        test.maps('identify-cm-cd', settings, options);
+      });
+    });
+
+    describe('group', function() {
+      var options = {'ignored': ['qt']};
+
+      it('should send account traits that are mapped as custom dimensions and metrics', function() {
+        test.maps('group-cm-cd', settings, options);
+      });
+    });
   });
 
   describe('.track()', function() {
