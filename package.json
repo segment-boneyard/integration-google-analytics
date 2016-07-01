@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "eslint": "2.x",
+    "sinon": "^1.17.4",
     "@segment/eslint-config": "^3.0.0",
     "istanbul": "0.x",
     "jscs": "1.x",
