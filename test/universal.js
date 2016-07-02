@@ -13,6 +13,7 @@ var fmt = require('util').format;
 var helpers = require('./helpers');
 var requestOverride = require('./request-override');
 var mapper = require('../lib/universal/mapper');
+var sinon = require('sinon');
 
 /**
  * Tests.
@@ -143,6 +144,39 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .track(json.input)
         .sendsAlmost(json.output, {ignored: ['qt']})
+        .expects(200, done);
+    });
+
+    it('should set qt to be accurate queue time', function(done) {
+      var callSentTime = new Date();
+      var clock = sinon.useFakeTimers(callSentTime.getTime()); 
+      var json = test.fixture('track-basic');
+
+      json.input.timestamp = callSentTime.toISOString();
+      clock.tick(1000)
+      json.output.qt = new Date() - callSentTime
+
+      test
+        .set(settings)
+        .track(json.input)
+        .sendsAlmost(json.output)
+        .expects(200, done);
+      
+    });
+
+    it('should set a max limit of 14340000ms max for queue time', function(done) {
+      var callSentTime = new Date();
+      var clock = sinon.useFakeTimers(callSentTime.getTime()); 
+      var json = test.fixture('track-basic');
+      
+      json.input.timestamp = callSentTime.toISOString();
+      clock.tick(14340001)
+      json.output.qt = 14340000
+
+      test
+        .set(settings)
+        .track(json.input)
+        .sendsAlmost(json.output)
         .expects(200, done);
     });
 
