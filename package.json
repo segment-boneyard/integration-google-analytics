@@ -21,7 +21,7 @@
     "is": "^2.1.0",
     "obj-case": "^0.1.1",
     "segmentio-facade": "^2.1.0",
-    "segmentio-integration": "^3.2.0",
+    "segmentio-integration": "git+ssh://git@github.com/segmentio/integration#server-side-debugger-dep",
     "string-hash": "^1.1.0",
     "unix-time": "^1.0.1"
   },
