@@ -1,4 +1,14 @@
 
+1.4.5 / 2016-07-05
+==================
+
+  * fixed bug causing qt to always be maximum value (#41)
+
+1.4.4 / 2016-06-24
+==================
+
+  * set max queue time to 4hrs
+
 1.4.3 / 2016-04-29
 ==================
 
