@@ -86,10 +86,6 @@ describe('Google Analytics :: Universal', function() {
       it('should map url in track call', function() {
         test.maps('track-url', settings, options);
       });
-
-      it('should map screenName (cd) as url in non-mobile track calls', function() {
-        test.maps('track-url-non-mobile', settings, options);
-      });
     });
 
     describe('completed-order', function() {

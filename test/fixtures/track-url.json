@@ -22,7 +22,6 @@
     "ni": 1,
     "v": 1,
     "dh": "randomsubdomain.segment.com",
-    "dp": "/pricing",
-    "cd": "http://randomsubdomain.segment.com/pricing"
+    "dp": "/pricing"
   }
 }
