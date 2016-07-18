@@ -1,5 +1,10 @@
 {
   "input": {
+    "context": {
+      "library": {
+        "name": "analytics-ios"
+      }
+    },
     "type": "track",
     "userId": "user-id",
     "event": "some-event",
@@ -8,11 +13,11 @@
       "label": "some-label",
       "category": "some-category",
       "nonInteraction": 1,
-      "url": "http://randomsubdomain.segment.com/pricing"
+      "screenName": "name-of-screen-where-event-occurs"
     }
   },
   "output": {
-    "tid": "UA-27033709-11",
+    "tid": "UA-27033709-23",
     "cid": 2710159508,
     "ea": "some-event",
     "ec": "some-category",
@@ -21,8 +26,6 @@
     "t": "event",
     "ni": 1,
     "v": 1,
-    "dh": "randomsubdomain.segment.com",
-    "dp": "/pricing",
-    "cd": "http://randomsubdomain.segment.com/pricing"
+    "cd": "name-of-screen-where-event-occurs"
   }
 }

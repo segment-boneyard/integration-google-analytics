@@ -3,12 +3,16 @@
     "type": "track",
     "userId": "user-id",
     "event": "some-event",
+    "context": {
+      "page": {
+        "url": "http://sampleurl.com/something"
+      }
+    },
     "properties": {
       "value": 1,
       "label": "some-label",
       "category": "some-category",
-      "nonInteraction": 1,
-      "url": "http://randomsubdomain.segment.com/pricing"
+      "nonInteraction": 1
     }
   },
   "output": {
@@ -21,8 +25,8 @@
     "t": "event",
     "ni": 1,
     "v": 1,
-    "dh": "randomsubdomain.segment.com",
-    "dp": "/pricing",
-    "cd": "http://randomsubdomain.segment.com/pricing"
+    "dh": "sampleurl.com",
+    "dp": "/something",
+    "cd": "http://sampleurl.com/something"
   }
 }

@@ -86,6 +86,10 @@ describe('Google Analytics :: Universal', function() {
       it('should map url in track call', function() {
         test.maps('track-url', settings, options);
       });
+
+      it('should map screenName (cd) as url in non-mobile track calls', function() {
+        test.maps('track-url-non-mobile', settings, options);
+      });
     });
 
     describe('completed-order', function() {
@@ -138,7 +142,7 @@ describe('Google Analytics :: Universal', function() {
         .expects(200, done);
     });
 
-    it('should respect .label, .category and .value', function(done) {
+    it('should respect .label, .category, and .value and not use .screenName', function(done) {
       var json = test.fixture('track-basic');
       test
         .set(settings)
@@ -147,9 +151,16 @@ describe('Google Analytics :: Universal', function() {
         .expects(200, done);
     });
 
+    it('should respect name for mobile track calls', function(done) {
+      var json = test.fixture('track-basic-mobile');
+      test
+        .set(settings)
+        .track(json.input)
+        .sendsAlmost(json.output, {ignored: ['qt']});
+
     it('should set qt to be accurate queue time', function(done) {
       var callSentTime = new Date();
-      var clock = sinon.useFakeTimers(callSentTime.getTime()); 
+      var clock = sinon.useFakeTimers(callSentTime.getTime());
       var json = test.fixture('track-basic');
 
       json.input.timestamp = callSentTime.toISOString();
@@ -161,14 +172,14 @@ describe('Google Analytics :: Universal', function() {
         .track(json.input)
         .sendsAlmost(json.output)
         .expects(200, done);
-      
+
     });
 
     it('should set a max limit of 14340000ms max for queue time', function(done) {
       var callSentTime = new Date();
-      var clock = sinon.useFakeTimers(callSentTime.getTime()); 
+      var clock = sinon.useFakeTimers(callSentTime.getTime());
       var json = test.fixture('track-basic');
-      
+
       json.input.timestamp = callSentTime.toISOString();
       clock.tick(14340001)
       json.output.qt = 14340000
