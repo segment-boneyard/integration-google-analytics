@@ -7,8 +7,7 @@
       "value": 1,
       "label": "some-label",
       "category": "some-category",
-      "nonInteraction": 1,
-      "name": "name-of-screen-where-event-occurs"
+      "nonInteraction": 1
     }
   },
   "output": {

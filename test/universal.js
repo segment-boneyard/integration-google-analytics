@@ -138,7 +138,7 @@ describe('Google Analytics :: Universal', function() {
         .expects(200, done);
     });
 
-    it('should respect .label, .category, and .value and not use .screenName', function(done) {
+    it('should respect .label, .category and .value', function(done) {
       var json = test.fixture('track-basic');
       test
         .set(settings)
@@ -146,13 +146,6 @@ describe('Google Analytics :: Universal', function() {
         .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
-
-    it('should respect name for mobile track calls', function(done) {
-      var json = test.fixture('track-basic-mobile');
-      test
-        .set(settings)
-        .track(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']});
 
     it('should set qt to be accurate queue time', function(done) {
       var callSentTime = new Date();
