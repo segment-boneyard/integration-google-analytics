@@ -86,6 +86,10 @@ describe('Google Analytics :: Universal', function() {
       it('should map url in track call', function() {
         test.maps('track-url', settings, options);
       });
+
+      it('should map screenName (cd) as url in non-mobile track calls', function() {
+        test.maps('track-url-non-mobile', settings, options);
+      });
     });
 
     describe('completed-order', function() {
@@ -146,6 +150,15 @@ describe('Google Analytics :: Universal', function() {
         .sendsAlmost(json.output, {ignored: ['qt']})
         .expects(200, done);
     });
+
+    it('should respect name for mobile track calls', function(done) {
+      var json = test.fixture('track-basic-mobile');
+      test
+        .set(settings)
+        .track(json.input)
+        .sendsAlmost(json.output, {ignored: ['qt']})
+        .expects(200, done);
+      });
 
     it('should set qt to be accurate queue time', function(done) {
       var callSentTime = new Date();
