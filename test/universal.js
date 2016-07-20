@@ -180,6 +180,15 @@ describe('Google Analytics :: Universal', function() {
         .expects(200, done);
     });
 
+    it('should pass screenName to GA from options.screenName', function(done) {
+      var json = test.fixture('track-screen-name');
+      test
+        .set(settings)
+        .track(json.input)
+        .sendsAlmost(json.output, {ignored: ['qt']})
+        .expects(200, done);
+    })
+
     it('should fallback to .revenue after .value', function(done) {
       var json = test.fixture('track-revenue');
       test
