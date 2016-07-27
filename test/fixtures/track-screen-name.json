@@ -9,9 +9,9 @@
       "category": "some-category",
       "nonInteraction": 1
     },
-    "integrations": {
-      "Google Analytics": {
-        "screenName": "Home"
+    "context": {
+      "screen": {
+        "name": "Home"
       }
     }
   },

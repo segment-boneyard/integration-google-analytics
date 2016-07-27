@@ -180,7 +180,7 @@ describe('Google Analytics :: Universal', function() {
         .expects(200, done);
     });
 
-    it('should pass screenName to GA from options.screenName', function(done) {
+    it('should pass screenName to GA from context.screen.name', function(done) {
       var json = test.fixture('track-screen-name');
       test
         .set(settings)
