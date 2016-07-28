@@ -1,4 +1,13 @@
 
+1.4.8 / 2016-07-28
+==================
+
+  * Merge pull request #44 from segment-integrations/addScreenName
+  * merged
+  * screenName is drawn from context.screen.name
+  * Removed duplicate obj-case dependency
+  * added screenName option to track events
+
 1.4.7 / 2016-07-23
 ==================
 
