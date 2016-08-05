@@ -1,4 +1,10 @@
 
+1.4.9 / 2016-08-05
+==================
+
+  * Update Integration-Tester version
+  * Add support for Ecommerce spec v2
+
 1.4.8 / 2016-07-28
 ==================
 
