@@ -2,7 +2,7 @@
   "input": {
     "userId": "user-id",
     "type": "track",
-    "event": "Added Product",
+    "event": "Product Added",
     "context": {
       "page": {
         "path": "/integrations",
@@ -25,7 +25,7 @@
     "dh": "segment.com",
     "dp": "/integrations",
     "dt": "Integrations - Segment",
-    "ea": "Added Product",
+    "ea": "Product Added",
     "ec": "EnhancedEcommerce",
     "el": "event",
     "pr1ca": "Games",

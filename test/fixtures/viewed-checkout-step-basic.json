@@ -2,7 +2,7 @@
   "input": {
     "userId": "user-id",
     "type": "track",
-    "event": "Viewed Checkout Step",
+    "event": "Checkout Step Viewed",
     "context": {
       "page": {
         "path": "/integrations",
@@ -37,7 +37,7 @@
     }
   },
   "output": {
-    "ea": "Viewed Checkout Step",
+    "ea": "Checkout Step Viewed",
     "ec": "EnhancedEcommerce",
     "el": "event",
     "cid": 2710159508,
@@ -46,7 +46,7 @@
     "dh": "segment.com",
     "dp": "/integrations",
     "dt": "Integrations - Segment",
-    "ea": "Viewed Checkout Step",
+    "ea": "Checkout Step Viewed",
     "ec": "EnhancedEcommerce",
     "pa": "checkout",
     "pr1br": "Nike",

@@ -25,7 +25,7 @@ exports.transaction = function(options) {
     userId: firstId,
     channel: 'server',
     timestamp: new Date(),
-    event: 'Completed Order',
+    event: 'Order Completed',
     properties: {
       orderId: 't-39a224df',
       total: 99.99,
