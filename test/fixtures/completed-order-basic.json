@@ -2,7 +2,7 @@
   "input": {
     "userId": "user-id",
     "type": "track",
-    "event": "Order Completed",
+    "event": "Completed Order",
     "properties": {
       "orderId": "order-id",
       "affiliation": "affiliation",
@@ -26,16 +26,6 @@
     }
   },
   "output": [
-    {
-      "cid": 2710159508,
-      "t": "event",
-      "tid": "UA-27033709-11",
-      "ea": "Order Completed",
-      "ec": "All",
-      "el": "event",
-      "ev": 1000,
-      "v": 1
-    },
     {
       "cid": 2710159508,
       "cu": "USD",

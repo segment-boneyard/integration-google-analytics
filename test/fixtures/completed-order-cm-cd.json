@@ -44,19 +44,6 @@
   "output": [
     {
       "cid": 2710159508,
-      "t": "event",
-      "tid": "UA-27033709-11",
-      "ea": "Order Completed",
-      "ec": "All",
-      "el": "event",
-      "ev": 1000,
-      "cd51": "doe",
-      "cd55": "john",
-      "cm11": 20.99,
-      "v": 1
-    },
-    {
-      "cid": 2710159508,
       "cd51": "doe",
       "cd55": "john",
       "cm11": 20.99,
