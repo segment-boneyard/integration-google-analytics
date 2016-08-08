@@ -1,4 +1,9 @@
 
+1.5.0 / 2016-08-08
+==================
+
+  * Fix regular ecommerce Completed Order/Order Completed event
+
 1.4.9 / 2016-08-05
 ==================
 
