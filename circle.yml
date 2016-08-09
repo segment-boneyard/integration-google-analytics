@@ -19,6 +19,6 @@ deployment:
     - curl -sLu "$HTTP_AUTH:" $BUILD | sh
 
   completed-order-replay-version:
-   branch: $completed-order-replay-version
+   branch: completed-order-replay-version
    commands:
     - curl -sLu "$HTTP_AUTH:" $BUILD | /bin/bash
