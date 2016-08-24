@@ -14,7 +14,7 @@
     "properties": {
       "products": [
         {
-          "id": 12345,
+          "product_id": 12345,
           "name": "Air Jordans",
           "quantity": 1
         }

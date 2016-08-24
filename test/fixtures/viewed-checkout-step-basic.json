@@ -18,7 +18,7 @@
         {
           "brand": "Nike",
           "category": "Footwear",
-          "id": 10943,
+          "product_id": 10943,
           "name": "Air Jordans",
           "price": 99.95,
           "quantity": 1,
@@ -27,7 +27,7 @@
         {
           "brand": "Adidas",
           "category": "Clothing",
-          "id": 22204,
+          "product_id": 22204,
           "name": "Shorts",
           "price": 19.95,
           "quantity": 1,

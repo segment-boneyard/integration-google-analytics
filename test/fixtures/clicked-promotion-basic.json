@@ -6,7 +6,7 @@
     "properties": {
       "creative": "Some dummy creative here",
       "currency": "USD",
-      "id": "PROMO_1",
+      "promotionId": "PROMO_1",
       "label": "Some Label",
       "name": "summer_sale",
       "position": "slot_1"
