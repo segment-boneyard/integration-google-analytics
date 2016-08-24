@@ -449,6 +449,17 @@ describe('Google Analytics :: Universal', function() {
       });
     });
 
+    describe('#refundedOrderPartial', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('refunded-order-partial');
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, {ignored: ['qt']})
+          .expects(200, done);
+      });
+    });
+
     describe('#clickedPromotion', function() {
       it('should send the right data', function(done) {
         var json = test.fixture('clicked-promotion-basic');
@@ -602,6 +613,19 @@ describe('Google Analytics :: Universal', function() {
     describe('#refundedOrder', function() {
       it('should be a valid hit', function(done) {
         var json = test.fixture('refunded-order-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test.integration.request = requestOverride;
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#refundedOrderPartial', function() {
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('refunded-order-partial');
         test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
         test.integration.request = requestOverride;
         test
