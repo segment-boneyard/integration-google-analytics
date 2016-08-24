@@ -1,4 +1,10 @@
 
+1.6.0 / 2016-08-24
+==================
+
+  * Merge pull request #50 from segment-integrations/partialRefunds
+  * added partial refund functionality
+
 1.5.1 / 2016-08-24
 ==================
 
