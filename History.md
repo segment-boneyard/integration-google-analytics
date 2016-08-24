@@ -1,4 +1,9 @@
 
+1.5.1 / 2016-08-24
+==================
+
+  * changed tests and mapper to comply with spec v2 id's (#49)
+
 1.5.0 / 2016-08-08
 ==================
 
