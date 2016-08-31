@@ -1,4 +1,9 @@
 
+1.6.1 / 2016-08-31
+==================
+
+  * deprecate order started, use checkout started
+
 1.6.0 / 2016-08-24
 ==================
 
