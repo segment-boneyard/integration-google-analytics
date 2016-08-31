@@ -394,9 +394,9 @@ describe('Google Analytics :: Universal', function() {
       });
     });
 
-    describe('#startedOrder', function() {
+    describe('#startedCheckout', function() {
       it('should send the right data', function(done) {
-        var json = test.fixture('started-order-basic');
+        var json = test.fixture('started-checkout-basic');
         test
           .set(settings)
           .track(json.input)
@@ -545,9 +545,9 @@ describe('Google Analytics :: Universal', function() {
       });
     });
 
-    describe('#startedOrder', function() {
+    describe('#startedCheckout', function() {
       it('should be a valid hit', function(done) {
-        var json = test.fixture('started-order-basic');
+        var json = test.fixture('started-checkout-basic');
         test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
         test.integration.request = requestOverride;
         test
