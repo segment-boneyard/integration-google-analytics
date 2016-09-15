@@ -11,12 +11,14 @@
       "tax": 80.99,
       "currency": "USD",
       "products": [{
+        "product_id": "yolo",
         "sku": "sony-pulse-sku",
         "category": "gaming",
         "price": 199.99,
         "name": "sony pulse",
         "quantity": 1
       }, {
+        "product_id": "yolo1",
         "sku": "sony-playstation-4-sku",
         "category": "gaming",
         "price": 799.99,

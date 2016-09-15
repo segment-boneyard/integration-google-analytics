@@ -282,7 +282,7 @@ describe('Google Analytics :: Universal', function() {
   });
 
   describe('.completedOrder()', function() {
-    it('should send regular completed order event', function(done) {
+    it.only('should send regular completed order event', function(done) {
       var json = test.fixture('completed-order-basic');
       test
         .set(settings)
@@ -290,7 +290,9 @@ describe('Google Analytics :: Universal', function() {
         .track(json.input)
         .request(0)
         .sendsAlmost(json.output[0], {ignored: ['qt']})
-        .expects(200, done);
+        .expects(200, function(err, res){
+          console.log('RES', res[2].req._data);
+        });
     });
 
     it('should send transaction data', function(done) {
