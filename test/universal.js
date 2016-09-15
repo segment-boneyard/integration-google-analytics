@@ -10,10 +10,10 @@ var assert = require('assert');
 var each = require('lodash.foreach');
 var enhancedEcommerceMethods = require('../lib/universal/enhanced-ecommerce');
 var fmt = require('util').format;
-var helpers = require('./helpers');
-var requestOverride = require('./request-override');
 var mapper = require('../lib/universal/mapper');
 var sinon = require('sinon');
+
+require('./request-override');
 
 /**
  * Tests.
@@ -37,7 +37,7 @@ describe('Google Analytics :: Universal', function() {
 
   describe('mapper', function() {
     describe('page', function() {
-      var options = {'ignored': ['qt']};
+      var options = { ignored: ['qt'] };
 
       it('should map basic page', function() {
         test.maps('page-basic', settings, options);
@@ -65,7 +65,7 @@ describe('Google Analytics :: Universal', function() {
     });
 
     describe('track', function() {
-      var options = {'ignored': ['qt']};
+      var options = { ignored: ['qt'] };
 
       it('should map basic track', function() {
         test.maps('track-basic', settings, options);
@@ -89,7 +89,7 @@ describe('Google Analytics :: Universal', function() {
     });
 
     describe('completed-order', function() {
-      var options = {'ignored': ['qt']};
+      var options = { ignored: ['qt'] };
 
       it('should map basic completed-order', function() {
         test.maps('completed-order-basic', settings, options);
@@ -109,7 +109,7 @@ describe('Google Analytics :: Universal', function() {
     });
 
     describe('screen', function() {
-      var options = {'ignored': ['qt']};
+      var options = { ignored: ['qt'] };
 
       it('should map basic screen', function() {
         test.maps('screen-basic', settings, options);
@@ -127,7 +127,6 @@ describe('Google Analytics :: Universal', function() {
   });
 
   describe('.track()', function() {
-
     it('should get a good response from the API', function(done) {
       var track = {};
       track.userId = 'userId';
@@ -143,7 +142,7 @@ describe('Google Analytics :: Universal', function() {
       test
         .set(settings)
         .track(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -153,15 +152,14 @@ describe('Google Analytics :: Universal', function() {
       var json = test.fixture('track-basic');
 
       json.input.timestamp = callSentTime.toISOString();
-      clock.tick(1000)
-      json.output.qt = new Date() - callSentTime
+      clock.tick(1000);
+      json.output.qt = new Date() - callSentTime;
 
       test
         .set(settings)
         .track(json.input)
         .sendsAlmost(json.output)
         .expects(200, done);
-
     });
 
     it('should set a max limit of 14340000ms max for queue time', function(done) {
@@ -170,8 +168,8 @@ describe('Google Analytics :: Universal', function() {
       var json = test.fixture('track-basic');
 
       json.input.timestamp = callSentTime.toISOString();
-      clock.tick(14340001)
-      json.output.qt = 14340000
+      clock.tick(14340001);
+      json.output.qt = 14340000;
 
       test
         .set(settings)
@@ -185,16 +183,16 @@ describe('Google Analytics :: Universal', function() {
       test
         .set(settings)
         .track(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
-    })
+    });
 
     it('should fallback to .revenue after .value', function(done) {
       var json = test.fixture('track-revenue');
       test
         .set(settings)
         .track(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -204,7 +202,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .track(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -214,7 +212,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .track(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
   });
@@ -225,7 +223,7 @@ describe('Google Analytics :: Universal', function() {
       test
         .set(settings)
         .page(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -235,7 +233,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .page(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -245,7 +243,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .page(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
   });
@@ -256,7 +254,7 @@ describe('Google Analytics :: Universal', function() {
       test
         .set(settings)
         .screen(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -266,7 +264,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .screen(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -276,7 +274,7 @@ describe('Google Analytics :: Universal', function() {
         .set(settings)
         .set(json.settings)
         .screen(json.input)
-        .sendsAlmost(json.output, {ignored: ['qt']})
+        .sendsAlmost(json.output, { ignored: ['qt'] })
         .expects(200, done);
     });
   });
@@ -289,7 +287,7 @@ describe('Google Analytics :: Universal', function() {
         .set({ enhancedEcommerce: false })
         .track(json.input)
         .request(0)
-        .sendsAlmost(json.output[0], {ignored: ['qt']})
+        .sendsAlmost(json.output[0], { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -300,7 +298,7 @@ describe('Google Analytics :: Universal', function() {
         .set({ enhancedEcommerce: false })
         .track(json.input)
         .request(1)
-        .sendsAlmost(json.output[1], {ignored: ['qt']})
+        .sendsAlmost(json.output[1], { ignored: ['qt'] })
         .expects(200, done);
     });
 
@@ -311,7 +309,7 @@ describe('Google Analytics :: Universal', function() {
         .set({ enhancedEcommerce: false })
         .track(json.input)
         .request(2)
-        .sendsAlmost(json.output[2], {ignored: ['qt']})
+        .sendsAlmost(json.output[2], { ignored: ['qt'] })
         .expects(200, done);
     });
   });
@@ -356,308 +354,269 @@ describe('Google Analytics :: Universal', function() {
         test
           .set(settings)
           .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(200, done);
       });
-    });
 
-    describe('#clickedProduct', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('clicked-product-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#addedProduct', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('added-product-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#removedProduct', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('removed-product-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#startedCheckout', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('started-checkout-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#updatedOrder', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('updated-order-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#completedCheckoutStep', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('completed-checkout-step-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#viewedCheckoutStep', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('viewed-checkout-step-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#refundedOrder', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('refunded-order-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#refundedOrderPartial', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('refunded-order-partial');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#clickedPromotion', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('clicked-promotion-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#completedOrder', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('completed-order-enhanced');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#viewedPromotion', function() {
-      it('should send the right data', function(done) {
-        var json = test.fixture('viewed-promotion-basic');
-        test
-          .set(settings)
-          .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
-          .expects(200, done);
-      });
-    });
-
-    describe('#viewedProduct', function() {
       it('should be a valid hit', function(done) {
         var json = test.fixture('viewed-product-basic');
         test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#clickedProduct', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('clicked-product-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('clicked-product-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#addedProduct', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('added-product-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('added-product-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#removedProduct', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('removed-product-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('removed-product-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#startedCheckout', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('started-checkout-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('started-checkout-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#updatedOrder', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('updated-order-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sendsAlmost(json.output, {ignored: ['qt']})
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('updated-order-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#completedCheckoutStep', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('completed-checkout-step-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
       it('should be a valid hit', function(done) {
         var json = test.fixture('completed-checkout-step-basic');
         test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
-          .expects(/"valid": true/, done);
-      });
-    });
-
-    describe('#completedOrder', function() {
-      it('should be a valid hit', function(done) {
-        var json = test.fixture('completed-order-enhanced');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
-        test
-          .set(settings)
-          .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#viewedCheckoutStep', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('viewed-checkout-step-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('viewed-checkout-step-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#refundedOrder', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('refunded-order-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('refunded-order-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#refundedOrderPartial', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('refunded-order-partial');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('refunded-order-partial');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#clickedPromotion', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('clicked-promotion-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('clicked-promotion-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#completedOrder', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('completed-order-enhanced');
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('completed-order-enhanced');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });
 
     describe('#viewedPromotion', function() {
-      it('should be a valid hit', function(done) {
+      it('should send the right data', function(done) {
         var json = test.fixture('viewed-promotion-basic');
-        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
-        test.integration.request = requestOverride;
         test
           .set(settings)
           .track(json.input)
-          .sends(json.output)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('viewed-promotion-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
           .expects(/"valid": true/, done);
       });
     });

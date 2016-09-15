@@ -11,10 +11,10 @@ machine:
 dependencies:
   pre:
    - pip install awscli
+   - npm install -g npm@2
 
 deployment:
   push:
    branch: master
    commands:
     - curl -sLu "$HTTP_AUTH:" $BUILD | sh
-

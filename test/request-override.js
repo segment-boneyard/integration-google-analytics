@@ -4,53 +4,19 @@
  * Google Analytics's validation endpoint returns responses with content-type
  * `application/javascript`, which superagent doesn't know how to parse.
  *
- * The superagent instance isn't exposed on the integration so we can't easily
- * mixin a custom parser; hence why we provide an alternative request method.
- *
- * Since we only need to hit the validation endpoint in our tests I'm fine
- * with the kludge.
+ * We can't muck with the request method much since integration-tester
+ * overwrites it. We can however trick superagent into getting a mime type of
+ * application/json every time it sees application/javascript. This is only for
+ * testing, so its less of a scary hack than it could be.
  */
 
-var request = require('superagent');
-request.parse['application/javascript'] = request.parse['application/json'];
+var utils = require('segmentio-integration/node_modules/superagent/lib/node/utils');
 
-/**
- * Direct copy of existing integration.request method, but with parser override
- * https://github.com/segmentio/integration/blob/master/lib/proto.js#L211
- */
+var cachedType = utils.type;
 
-module.exports = function(method, path) {
-  method = method || 'get';
-  var url = path || '';
-  var self = this;
-
-  if (!isAbsolute(url)) url = this.endpoint + url;
-  this.debug('create request %s', method, url);
-
-  var req = request[method](url);
-  var end = req.end;
-
-  req.set('User-Agent', 'Segment.io/1.0');
-  req.end = function onend(fn) {
-    fn = fn || function() {};
-    self.emit('request', this);
-    self.debug('request %s %j', req.url, req._data);
-    return end.call(this, function(err, res) {
-      if (err) return onerror(err, res, fn);
-      if (res.error) return onerror(res.error, res, fn);
-      return fn(null, res);
-    });
-  };
-
-  function onerror(err, res, fn) {
-    if (err.timeout) err.code = 'ECONNABORTED';
-    return fn(err, res);
+utils.type = function(str) {
+  if (str.indexOf('application/javascript') !== -1) {
+    return 'application/json';
   }
-
-  return req;
+  return cachedType(str);
 };
-
-function isAbsolute(url) {
-  return url.indexOf('https:') === 0
-    || url.indexOf('http:') === 0;
-}

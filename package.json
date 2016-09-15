@@ -35,9 +35,7 @@
     "merge-util": "^0.1.0",
     "mocha": "2.x",
     "ms": "0.x",
-    "obj-case": "^0.1.1",
-    "segmentio-integration-tester": "^2.0.1",
-    "superagent": "^1.8.1",
+    "segmentio-integration-tester": "^2.0.3",
     "uid": "0.0.2"
   }
 }
