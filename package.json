@@ -21,7 +21,7 @@
     "is": "^2.1.0",
     "obj-case": "^0.1.1",
     "segmentio-facade": "^3.0.3",
-    "segmentio-integration": "^4.0.0",
+    "segmentio-integration": "^5.0.1",
     "string-hash": "^1.1.0",
     "unix-time": "^1.0.1"
   },
