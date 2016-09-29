@@ -1,4 +1,12 @@
 
+1.7.1 / 2016-09-29
+==================
+
+  * Update segmentio-integration to v5 (#55)
+  * Fix test assertions on new integration-tester version (#53)
+  * CircleCI: Run deployment only when tags are pushed
+  * CircleCI: Update circle.yml to install npm@2, ditch unnecessary deps (#56)
+
 1.7.0 / 2016-09-06
 ==================
 
