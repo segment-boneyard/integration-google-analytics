@@ -8,6 +8,10 @@
       "url": "https://segment.io/docs/integrations/google-analytics/"
     },
     "context": {
+      "library": {
+        "name": "analytics-ios",
+        "version": "3.5.0"
+    },
       "app": {
         "name": "web",
         "version": "1.1"
@@ -27,7 +31,7 @@
   "output": {
     "cid": 2710159508,
     "dh": "segment.io",
-    "tid": "UA-27033709-11",
+    "tid": "UA-27033709-23",
     "dp": "/docs/integrations/google-analytics/",
     "dt": "Docs Google Analytics",
     "an": "web",
@@ -35,6 +39,6 @@
     "t": "pageview",
     "v": 1,
     "ul": "en-US",
-    "ua": "Segment/1.0 (iPhone OS; CPU iPhone8,1; en-US) Apple; Version 9.3"
+    "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/9.0 Mobile/10B329 Safari/8536.25"
   }
 }
