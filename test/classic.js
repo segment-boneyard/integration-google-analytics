@@ -41,6 +41,25 @@ describe('Google Analytics Classic', function() {
         .expects(200)
         .end(done);
     });
+
+    it('should replace nonascii chars for userAgent', function(done) {
+      var track = helpers.track({ content: {
+        userAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; 谷���新道 Trident/6.0)' 
+      }});
+      var query = ga.classic._querystring(track);
+
+      query.utmhn = '';
+      query.utme = ga.classic.formatEvent(track);
+      query.utmt = 'event';
+      query.utmni = 1;
+
+      test
+        .set(settings)
+        .track(track)
+        .query(query)
+        .expects(200)
+        .end(done);
+    });
   });
 
   describe('.page()', function() {

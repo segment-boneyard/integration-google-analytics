@@ -1,8 +1,13 @@
 
+1.7.3 / 2016-11-03
+==================
+
+  * Replace nonascii characters with '?' in userAgent headers to prevent uncaughts
+
 1.7.2 / 2016-10-06
 ==================
 
-  * Fix a bug where iOS events weren't populating reports based on userAgent 
+  * Fix a bug where iOS events weren't populating reports based on userAgent
 
 1.7.1 / 2016-09-29
 ==================
