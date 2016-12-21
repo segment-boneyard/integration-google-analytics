@@ -8,9 +8,9 @@ var GoogleAnalytics = require('..');
 var Test = require('segmentio-integration-tester');
 var assert = require('assert');
 var each = require('lodash.foreach');
-var enhancedEcommerceMethods = require('../lib/universal/enhanced-ecommerce');
+var enhancedEcommerceMethods = require('../lib/enhanced-ecommerce');
 var fmt = require('util').format;
-var mapper = require('../lib/universal/mapper');
+var mapper = require('../lib/mapper');
 var sinon = require('sinon');
 
 require('./request-override');
@@ -31,7 +31,7 @@ describe('Google Analytics :: Universal', function() {
       serversideClassic: false
     };
     ga = new GoogleAnalytics(settings);
-    test = new Test(ga.universal, __dirname);
+    test = new Test(ga, __dirname);
     test.mapper(mapper);
   });
 
@@ -318,18 +318,18 @@ describe('Google Analytics :: Universal', function() {
     beforeEach(function() {
       settings.enhancedEcommerce = true;
       ga = new GoogleAnalytics(settings);
-      test = new Test(ga.universal, __dirname);
+      test = new Test(ga, __dirname);
       test.mapper(mapper);
     });
 
     it('should not have EE methods when EE is not enabled', function() {
       settings.enhancedEcommerce = false;
       ga = new GoogleAnalytics(settings);
-      test = new Test(ga.universal, __dirname);
+      test = new Test(ga, __dirname);
 
       each(enhancedEcommerceMethods, function(method, name) {
         assert(
-          ga.universal[name] !== method,
+          ga[name] !== method,
           /*eslint-disable*/
           fmt('GA should not have enhanced ecommerce method %s when settings.enhancedEcommerce is `false`', name)
           /*eslint-enable*/
@@ -340,7 +340,7 @@ describe('Google Analytics :: Universal', function() {
     it('should have EE methods when EE is not enabled', function() {
       each(enhancedEcommerceMethods, function(method, name) {
         assert(
-          ga.universal[name] === method,
+          ga[name] === method,
           /*eslint-disable*/
           fmt('GA should have enhanced ecommerce method %s when settings.enhancedEcommerce is `true`', name)
           /*eslint-enable*/
