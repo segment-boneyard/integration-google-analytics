@@ -1,39 +1,36 @@
+ESLINT := node_modules/.bin/eslint
+MOCHA := node_modules/.bin/mocha
 
-TESTS = $(shell find test -type f -name "*.js")
-SRC = $(shell find lib -type f -name "*.js")
-GREP ?= .
-ESLINT = node_modules/.bin/eslint
-
-default: node_modules test-style test-cov
-
-node_modules: package.json
-	@npm install
-
-lint: node_modules
-	@$(ESLINT) $(SRC) $(TESTS)
-
-fmt: node_modules
-	@$(ESLINT) --fix $(SRC) $(TESTS)
-
-test:
-	@TZ=UTC ./node_modules/.bin/mocha $(TESTS) \
-		--timeout 20000 \
-		--reporter spec \
-		--inline-diffs \
-		--grep "$(GREP)"
-
-test-cov:
-	@TZ=UTC ./node_modules/.bin/istanbul cover \
-	  node_modules/.bin/_mocha -- $(TESTS) \
-			--timeout 20s \
-			--reporter spec \
-			--inline-diffs \
-			--ui exports
-
-test-style:
-	@node_modules/.bin/jscs lib test
+TESTS = $(wildcard test/*.js)
+GREP ?=.
 
 clean:
-	rm -rf coverage node_modules *.log
+	rm -rf coverage *.log
+.PHONY: clean
 
-.PHONY: test test-cov test-style
+distclean: clean
+	rm -rf node_modules
+.PHONY: distclean
+
+node_modules: package.json $(wildcard node_modules/*/package.json)
+	@npm install
+	@touch $@
+
+install: node_modules
+.PHONY: install
+
+lint: install
+	@$(ESLINT) .
+.PHONY: lint
+
+fmt: install
+	@$(ESLINT) --fix .
+.PHONY: fmt
+
+test: install
+	@TZ=UTC $(MOCHA) $(TESTS) \
+		--grep "$(GREP)" \
+		--inline-diffs \
+		--reporter spec \
+		--timeout 20000
+.PHONY: test
