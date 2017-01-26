@@ -1,6 +1,4 @@
 machine:
-  environment:
-    WORKER_VERSION: 3.x
   node:
     version: 6.9.2
   services:
