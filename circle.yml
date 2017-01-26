@@ -1,9 +1,11 @@
 machine:
   node:
-    version: 0.10.38
+    version: 6.9.2 
   services:
     - docker
     - redis
+  environment:
+    WORKER_VERSION: 3.x
 
 dependencies:
   pre:
