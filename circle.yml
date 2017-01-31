@@ -1,20 +1,22 @@
 machine:
   node:
-    version: 0.10.38
+    version: 6.9.2
   services:
-    - docker
     - redis
+    - docker
 
 dependencies:
   pre:
-   - npm -g install npm@2
+    - npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
+  override:
+    - make install
+
+test:
+  override:
+    - make test
 
 deployment:
-  push:
-   branch: master
-   commands:
-    - curl -sLu "$HTTP_AUTH:" $BUILD | bash
-  push_tags:
-   tag: /[0-9]+\.[0-9]+\.[0-9]+/
-   commands:
-    - curl -sLu "$HTTP_AUTH:" $BUILD | bash
+  publish:
+    tag: /[0-9]+(\.[0-9]+)*(-.+)?/
+    commands:
+      - curl -sLu "$HTTP_AUTH:" https://raw.githubusercontent.com/segmentio/scripts/master/circle/docker/build.sh | sh
