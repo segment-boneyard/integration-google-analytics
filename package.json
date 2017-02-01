@@ -21,14 +21,16 @@
     "is": "^2.1.0",
     "obj-case": "^0.1.1",
     "segmentio-facade": "^3.0.3",
-    "segmentio-integration": "^5.0.1",
+    "segmentio-integration": "^5.1.0",
     "string-hash": "^1.1.0",
     "unix-time": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "2.x",
-    "sinon": "^1.17.4",
-    "@segment/eslint-config": "^3.0.0",
+    "@segment/eslint-config": "^3.4.0",
+    "eslint": "^2.13.1",
+    "eslint-plugin-mocha": "^2.2.0",
+    "eslint-plugin-react": "^4.3.0",
+    "eslint-plugin-require-path-exists": "^1.1.5",
     "istanbul": "0.x",
     "jscs": "1.x",
     "lodash.foreach": "^3.0.3",
@@ -36,6 +38,7 @@
     "mocha": "2.x",
     "ms": "0.x",
     "segmentio-integration-tester": "^2.0.3",
+    "sinon": "^1.17.4",
     "uid": "0.0.2"
   }
 }
