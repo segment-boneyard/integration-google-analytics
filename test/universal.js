@@ -86,6 +86,10 @@ describe('Google Analytics :: Universal', function() {
       it('should map url in track call', function() {
         test.maps('track-url', settings, options);
       });
+
+      it('should fail gracefully by skipping the product in products array if it is a nonobject', function(){
+        test.maps('started-checkout-uncaught', settings, options);
+      });
     });
 
     describe('completed-order', function() {

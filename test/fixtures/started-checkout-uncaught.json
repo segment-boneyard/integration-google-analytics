@@ -1,0 +1,41 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Checkout Started",
+    "context": {
+      "page": {
+        "path": "/integrations",
+        "search": "?xyz=123",
+        "title": "Integrations - Segment",
+        "url": "https://segment.com/integrations?xyz=123"
+      }
+    },
+    "properties": {
+      "products": [
+        {
+          "id": 12345,
+          "name": "Air Jordans",
+          "quantity": 1
+        },
+        "why"
+      ]
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "dh": "segment.com",
+    "dp": "/integrations",
+    "dt": "Integrations - Segment",
+    "ea": "Checkout Started",
+    "ec": "EnhancedEcommerce",
+    "el": "event",
+    "pa": "checkout",
+    "pr1id": 12345,
+    "pr1nm": "Air Jordans",
+    "pr1qt": 1,
+    "t": "event",
+    "tid": "UA-27033709-11",
+    "v": 1
+  }
+}

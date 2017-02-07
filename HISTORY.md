@@ -1,4 +1,9 @@
 
+1.8.1 / 2017-02-06
+==================
+
+  * Handle gracefully when sending malformed products array
+
 1.8.0 / 2017-01-31
 ==================
 
