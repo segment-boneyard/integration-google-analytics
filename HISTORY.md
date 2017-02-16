@@ -1,4 +1,9 @@
 
+1.8.2 / 2017-02-10
+==================
+
+  * Trigger build to ensure a version of the integration-worker with https://github.com/segmentio/integration-worker/pull/93 is used
+
 1.8.1 / 2017-02-06
 ==================
 
