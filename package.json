@@ -1,7 +1,6 @@
 {
   "name": "@segment/integration-google-analytics",
   "version": "1.8.4",
-  
   "description": "Google Analytics server-side integration",
   "author": "Segment <friends@segment.com>",
   "repository": {
