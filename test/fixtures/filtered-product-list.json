@@ -1,0 +1,74 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Product List Filtered",
+    "context": {
+      "page": {
+        "path": "/integrations",
+        "search": "?xyz=123",
+        "title": "Integrations - Segment",
+        "url": "https://segment.com/integrations?xyz=123"
+      }
+    },
+    "properties": {
+      "list_id": "electronics_sales",
+      "products": [{
+        "product_id": "507f1f77bcf86cd799439011",
+        "sku": "sony-pulse-sku",
+        "category": "gaming",
+        "price": 199.99,
+        "name": "sony pulse",
+        "position": 1,
+        "quantity": 6
+      }, {
+        "sku": "sony-playstation-4-sku",
+        "category": "gaming",
+        "price": 799.99,
+        "name": "sony playstation 4",
+        "position": 2,
+        "quantity": 8
+      }],
+      "filters": [{
+        "type": "department",
+        "value": "gaming"
+      },
+      {
+        "type": "price",
+        "value": "over"
+      }],
+      "sorters": [{
+        "type": "price",
+        "value": "desc"
+      }]
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "t": "pageview",
+    "tid": "UA-27033709-11",
+    "v": 1,
+    "pa": "detail",
+    "dh": "segment.com",
+    "dp": "/integrations",
+    "dt": "Integrations - Segment",
+    "ea": "Product List Filtered",
+    "el": "event",
+    "ec": "EnhancedEcommerce",
+    "il1nm": "electronics_sales",
+    "il1pi1id": "507f1f77bcf86cd799439011",
+    "il1pi2id": "sony-playstation-4-sku",
+    "il1pi1nm": "sony pulse",
+    "il1pi2nm": "sony playstation 4",
+    "il1pi1ca": "gaming",
+    "il1pi2ca": "gaming",
+    "il1pi1ps": 1,
+    "il1pi2ps": 2,
+    "il1pi1pr": 199.99,
+    "il1pi2pr": 799.99,
+    "il1pi1qt": 6,
+    "il1pi2qt": 8,
+    "il1pi1va": "department:gaming,price:over::price:desc",
+    "il1pi2va": "department:gaming,price:over::price:desc"
+  }
+}

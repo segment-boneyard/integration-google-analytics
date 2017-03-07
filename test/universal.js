@@ -341,7 +341,7 @@ describe('Google Analytics :: Universal', function() {
       });
     });
 
-    it('should have EE methods when EE is not enabled', function() {
+    it('should have EE methods when EE is enabled', function() {
       each(enhancedEcommerceMethods, function(method, name) {
         assert(
           ga.universal[name] === method,
@@ -616,6 +616,48 @@ describe('Google Analytics :: Universal', function() {
 
       it('should be a valid hit', function(done) {
         var json = test.fixture('viewed-promotion-basic');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#productListViewed', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('viewed-product-list');
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('viewed-product-list');
+        test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(/"valid": true/, done);
+      });
+    });
+
+    describe('#filteredProductList', function() {
+      it('should send the right data', function(done) {
+        var json = test.fixture('filtered-product-list');
+        test
+          .set(settings)
+          .track(json.input)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+
+      it('should be a valid hit', function(done) {
+        var json = test.fixture('filtered-product-list');
         test.integration.endpoint = 'https://ssl.google-analytics.com/debug/collect';
         test
           .set(settings)
