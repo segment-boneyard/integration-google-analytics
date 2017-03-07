@@ -21,4 +21,5 @@ deployment:
     commands:
       - curl -sLu "$HTTP_AUTH:" https://raw.githubusercontent.com/segmentio/scripts/master/circle/docker/build.sh | sh
       - npm publish --access=restricted
+      - curl -sLu "$HTTP_AUTH:" https://raw.githubusercontent.com/segmentio/integration-artifacts/master/build-integration | sh
 
