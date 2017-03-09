@@ -1,3 +1,9 @@
+1.9.5 / 2017-03-09
+==================
+
+  * Changed sorters -> sorts to match spec
+  * Protected expected array inputs
+
 1.9.4 / 2017-03-07
 ==================
 
