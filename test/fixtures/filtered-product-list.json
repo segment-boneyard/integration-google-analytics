@@ -37,7 +37,7 @@
         "type": "price",
         "value": "over"
       }],
-      "sorters": [{
+      "sorts": [{
         "type": "price",
         "value": "desc"
       }]
