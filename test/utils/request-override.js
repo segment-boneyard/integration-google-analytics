@@ -10,7 +10,7 @@
  * testing, so its less of a scary hack than it could be.
  */
 
-var utils = require('segmentio-integration/node_modules/superagent/lib/node/utils');
+var utils = require('superagent/lib/node/utils');
 
 var cachedType = utils.type;
 

@@ -13,7 +13,7 @@ var fmt = require('util').format;
 var mapper = require('../lib/universal/mapper');
 var sinon = require('sinon');
 
-require('./request-override');
+require('./utils/request-override');
 
 /**
  * Tests.
