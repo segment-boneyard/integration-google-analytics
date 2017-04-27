@@ -1,8 +1,12 @@
+1.9.9 / 2017-04-27
+==================
+
+  * Change addImpression-bound methods to use 'event' as their type
 
 1.9.8 / 2017-04-17
 ==================
 
-
+  * Push release
 
 1.9.6 / 2017-03-29
 ==================
