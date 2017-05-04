@@ -1,0 +1,34 @@
+{
+  "input": {
+    "type": "page",
+    "userId": "user-id",
+    "name": "Google Analytics",
+    "category": "Docs",
+    "properties": {
+      "url": "https://segment.io/docs/integrations/google-analytics/",
+      "campaign": {
+        "name": "c-name",
+        "source": "c-source",
+        "medium": "c-medium",
+        "term": "c-term",
+        "content": "c-content"
+      }
+    },
+    "context": {
+
+    }
+  },
+  "output": {
+    "cid": 2710159508,
+    "dh": "segment.io",
+    "tid": "UA-27033709-11",
+    "dp": "/docs/integrations/google-analytics/",
+    "dt": "Docs Google Analytics",
+    "t": "pageview",
+    "cn": "c-name",
+    "cs": "c-source",
+    "cm": "c-medium",
+    "cc": "c-content",
+    "v": 1
+  }
+}

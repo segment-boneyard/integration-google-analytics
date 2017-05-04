@@ -51,6 +51,10 @@ describe('Google Analytics :: Universal', function() {
         test.maps('page-campaign', settings, options);
       });
 
+      it('should map properties.campaign', function() {
+        test.maps('page-properties-campaign', settings, options);
+      });
+
       it('should map context.screen', function() {
         test.maps('page-screen', settings, options);
       });
