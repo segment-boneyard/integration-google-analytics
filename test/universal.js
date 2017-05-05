@@ -51,10 +51,6 @@ describe('Google Analytics :: Universal', function() {
         test.maps('page-campaign', settings, options);
       });
 
-      it('should map properties.campaign', function() {
-        test.maps('page-properties-campaign', settings, options);
-      });
-
       it('should map context.screen', function() {
         test.maps('page-screen', settings, options);
       });
@@ -73,6 +69,10 @@ describe('Google Analytics :: Universal', function() {
 
       it('should map basic track', function() {
         test.maps('track-basic', settings, options);
+      });
+
+      it('should map properties.campaign on Install Attributed', function() {
+        test.maps('track-install-attributed-campaign', settings, options);
       });
 
       it('should map context.app', function() {
