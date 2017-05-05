@@ -13,7 +13,8 @@
         "source": "c-source",
         "medium": "c-medium",
         "term": "c-term",
-        "content": "c-content"
+        "content": "c-content",
+        "keyword" : "c-keyword"
       }
     }
   },
@@ -28,6 +29,7 @@
     "cs": "c-source",
     "cm": "c-medium",
     "cc": "c-content",
+    "ck" :"c-keyword",
     "v": 1
   }
 }
