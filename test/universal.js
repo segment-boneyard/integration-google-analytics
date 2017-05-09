@@ -24,7 +24,7 @@ describe('Google Analytics :: Universal', function() {
   var settings;
   var test;
 
-  beforeEach(function() {
+  beforeEach(function() { 
     settings = {
       serversideTrackingId: 'UA-27033709-11',
       mobileTrackingId: 'UA-27033709-23',
@@ -284,7 +284,7 @@ describe('Google Analytics :: Universal', function() {
   });
 
   describe('.completedOrder()', function() {
-    it('should send regular completed order event', function(done) {
+    it('should send a regular completed order event', function(done) {
       var json = test.fixture('completed-order-basic');
       test
         .set(settings)
@@ -315,6 +315,61 @@ describe('Google Analytics :: Universal', function() {
         .request(2)
         .sendsAlmost(json.output[2], { ignored: ['qt'] })
         .expects(200, done);
+    });
+  });
+
+  describe('Mobile Campaign Events', function() {
+
+    describe('.installAttributed()', function() {
+      it('should send a regular install attributed event with properties.campaign', function(done) {
+        var json = test.fixture('install-attributed-basic');
+        test
+          .set(settings)
+          .set({ enhancedEcommerce: false })
+          .track(json.input)
+          .request(0)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+    });
+
+    describe('.pushNotificationReceived()', function() {
+      it('should send a regular push notification received event with properties.campaign', function(done) {
+        var json = test.fixture('push-notification-received-basic');
+        test
+          .set(settings)
+          .set({ enhancedEcommerce: false })
+          .track(json.input)
+          .request(0)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });      
+    });
+
+    describe('.pushNotificationTapped()', function() {
+      it('should send a regular install attributed event with properties.campaign', function(done) {
+        var json = test.fixture('push-notification-tapped-basic');
+        test
+          .set(settings)
+          .set({ enhancedEcommerce: false })
+          .track(json.input)
+          .request(0)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
+    });
+
+    describe('.pushNotificationBounced()', function() {
+      it('should send a regular install attributed event with properties.campaign', function(done) {
+        var json = test.fixture('push-notification-bounced-basic');
+        test
+          .set(settings)
+          .set({ enhancedEcommerce: false })
+          .track(json.input)
+          .request(0)
+          .sendsAlmost(json.output, { ignored: ['qt'] })
+          .expects(200, done);
+      });
     });
   });
 

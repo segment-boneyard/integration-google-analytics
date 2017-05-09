@@ -1,3 +1,8 @@
+1.10.0 / 2017-05-09
+===================
+
+  * Add explicit support for mobile event campaign objects
+
 1.9.9 / 2017-04-27
 ==================
 

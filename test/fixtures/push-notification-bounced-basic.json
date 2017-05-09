@@ -1,0 +1,33 @@
+{
+  "input": {
+  "type": "track",
+  "anonymousId": "aded5d8b-1869-479e-baa6-fb717ff3ee07",
+  "event": "Push Notification Bounced",
+  "messageId": "85309d51-fb22-41e4-a0c8-7d4551f79cec",
+  "properties": {
+    "action": "Accept",
+    "campaign": {
+      "content": "test content100",
+      "name": "test campaign100",
+      "source": "test source100",
+      "medium" : "test medium",
+      "keyword" : "test keyword"
+    }
+  }
+},
+  "output": {
+    "ea": "Push Notification Bounced",
+    "tid": "UA-27033709-11",
+    "cn": "test campaign100",
+    "cs": "test source100",
+    "cc": "test content100",
+    "ck": "test keyword",
+    "cm": "test medium",
+    "v": 1,
+    "tid": "UA-27033709-11",
+    "cid": 3247070406,
+    "ec": "All",
+    "el": "Accept",
+    "t": "event"
+  }
+}
