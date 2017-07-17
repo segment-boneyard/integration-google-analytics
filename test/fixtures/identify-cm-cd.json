@@ -1,0 +1,37 @@
+{
+  "settings": {
+    "dimensions": {
+      "connectedness": "dimension55",
+      "qualified": "dimension56",
+      "role": "dimension8",
+      "dontsend": "dimension1"
+    },
+    "metrics": {
+      "plan": "metric90"
+    },
+    "sendUserId": true
+  },
+  "input": {
+    "type": "identify",
+    "userId": "user-id",
+    "traits": {
+        "connectedness": "very",
+        "qualified": true,
+        "role": "Product"
+    },
+    "context": {}
+  },
+  "output": {
+    "cid": 2710159508,
+    "tid": "UA-27033709-11",
+    "uid": "user-id",
+    "cd55": "very",
+    "cd56": "true",
+    "cd8": "Product",
+    "ea":"identify",
+    "el":"identify",
+    "ec":"user",
+    "t": "event",
+    "v": 1
+  }
+}

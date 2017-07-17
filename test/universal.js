@@ -23,8 +23,10 @@ describe('Google Analytics :: Universal', function() {
   var ga;
   var settings;
   var test;
+  var sandbox;
 
   beforeEach(function() { 
+    sandbox = sinon.sandbox.create();
     settings = {
       serversideTrackingId: 'UA-27033709-11',
       mobileTrackingId: 'UA-27033709-23',
@@ -127,6 +129,29 @@ describe('Google Analytics :: Universal', function() {
         delete settings.mobileTrackingId;
         test.maps('screen-server-id', settings, options);
       });
+    });
+  });
+
+  describe('identify', function() {
+    var options = {'ignored': ['qt']};
+
+    it('should send traits that are mapped as custom dimensions and metrics', function() {
+      test.maps('identify-cm-cd', settings, options);
+    });
+
+    it('should get a good response from the API', function(done) {
+       var spy = sandbox.spy(ga.universal, 'post');
+       var identify = {};
+      settings.dimensions = { trait: "dimension8" };
+      identify.userId = 'userId';
+      identify.traits = { trait: true };
+      test
+        .identify(identify, settings)
+        .expects(200)
+        .end(function(err, res){
+          assert(spy.called, 'Expected spy to have been called');
+          done(err);
+        });;
     });
   });
 
